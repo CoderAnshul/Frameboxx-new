@@ -248,9 +248,9 @@ export default function TestimonialsReel() {
           </div>
 
           {/* ---- Reel wall ---- */}
-          <div className="reel-scroll flex sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 overflow-x-auto -mx-5 px-5 sm:mx-0 sm:px-0">
+          <div className="reel-scroll flex overflow-x-auto snap-x snap-mandatory sm:grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6 -mx-5 px-5 sm:mx-0 sm:px-0">
             {VIDEOS.map((video, i) => (
-              <div key={video.id} className="fade-up w-[68vw] xs:w-[58vw] sm:w-auto" style={{ animationDelay: `${0.14 + i * 0.06}s` }}>
+              <div key={video.id} className="fade-up shrink-0 w-[calc(100vw-40px)] snap-center sm:w-auto" style={{ animationDelay: `${0.14 + i * 0.06}s` }}>
                 <VideoCard video={video} index={i} playingId={playingId} setPlayingId={setPlayingId} />
               </div>
             ))}

@@ -547,6 +547,23 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
         }
       `}</style>
 
+      {/* ---------------- ANNOUNCEMENT BAR (Mobile & screens below tablet) ---------------- */}
+      <div
+        className="md:hidden w-full py-2.5 px-4 text-center flex items-center justify-center gap-2 text-[12.5px] font-medium border-b"
+        style={{
+          backgroundColor: C.panel,
+          borderColor: "rgba(255,255,255,0.06)",
+          color: C.paper,
+          fontFamily: "'Space Grotesk', sans-serif",
+        }}
+      >
+        <Phone size={12} style={{ color: C.gold }} />
+        <span style={{ color: C.slateLight }}>Call Now:</span>
+        <a href="tel:+919327024272" className="hover:underline" style={{ color: C.gold }}>
+          +91 93270 24272
+        </a>
+      </div>
+
       {/* ---------------- NAV ---------------- */}
       <nav
         className="relative z-20 max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-10 py-4 border-b"
@@ -586,7 +603,7 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
           </button>
           <a
             href="tel:+919327024272"
-            className="flex items-center gap-2 rounded-full px-4 py-2 text-[12.5px] font-medium transition-colors"
+            className="hidden md:flex items-center gap-2 rounded-full px-4 py-2 text-[12.5px] font-medium transition-colors"
             style={{ backgroundColor: C.panel, color: C.paper, border: `1px solid ${C.panelBorder}` }}
           >
             <Phone size={13} style={{ color: C.gold }} />
