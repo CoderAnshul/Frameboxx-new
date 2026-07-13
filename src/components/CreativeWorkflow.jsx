@@ -61,9 +61,9 @@ const staggerContainer = {
 const cardHover = {
   hover: {
     y: -4,
-    borderColor: "rgba(245, 193, 49, 0.45)",
-    backgroundColor: "rgba(245, 193, 49, 0.03)",
-    boxShadow: "0 10px 25px rgba(0, 0, 0, 0.3), 0 0 12px rgba(245, 193, 49, 0.02)",
+    borderColor: `${C.gold}77`,
+    backgroundColor: "rgba(92, 73, 179, 0.03)",
+    boxShadow: "0 10px 25px rgba(0, 0, 0, 0.5), 0 0 12px rgba(244, 185, 3, 0.02)",
     transition: { duration: 0.3, ease: "easeOut" }
   }
 };
@@ -74,7 +74,7 @@ export default function CreativeWorkflow() {
       className="relative overflow-hidden border-b py-10 sm:py-14"
       style={{
         backgroundColor: C.inkSoft,
-        borderColor: "rgba(255,255,255,0.06)",
+        borderColor: C.panelBorder,
         fontFamily: "'Inter', sans-serif"
       }}
     >
@@ -83,7 +83,7 @@ export default function CreativeWorkflow() {
         * { box-sizing: border-box; }
         .wf-card {
           background-color: ${C.panel}33;
-          border: 1px solid rgba(255, 255, 255, 0.03);
+          border: 1px solid ${C.panelBorder}33;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
       `}</style>
@@ -92,7 +92,7 @@ export default function CreativeWorkflow() {
       <div 
         className="pointer-events-none absolute w-[400px] h-[400px] rounded-full" 
         style={{
-          background: `radial-gradient(circle, ${C.gold}04 0%, transparent 70%)`,
+          background: `radial-gradient(circle, rgba(244, 185, 3, 0.04) 0%, transparent 70%)`,
           bottom: "-10%",
           right: "5%"
         }}
@@ -139,7 +139,7 @@ export default function CreativeWorkflow() {
               >
                 <div
                   className="flex h-9 w-9 items-center justify-center rounded-lg border"
-                  style={{ borderColor: "rgba(255,255,255,0.06)", backgroundColor: "#1e1d1c" }}
+                  style={{ borderColor: C.panelBorder, backgroundColor: C.ink }}
                 >
                   <Icon size={16} style={{ color: C.gold }} strokeWidth={1.5} />
                 </div>

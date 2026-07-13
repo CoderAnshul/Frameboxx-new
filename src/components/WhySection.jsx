@@ -55,7 +55,7 @@ function ReasonCard({ r, i, revealed }) {
       className={`relative shrink-0 w-4/5 sm:w-3/5 lg:w-auto rounded-2xl overflow-hidden transition-all duration-700 ease-out ${LIFT[i]}`}
       style={{
         backgroundColor: C.inkSoft,
-        border: `1px solid ${C.panelBorder}`,
+        border: `1px solid ${C.panelBorder}33`,
         boxShadow: "0 24px 50px -24px rgba(0,0,0,0.55)",
         opacity: revealed ? 1 : 0,
         transform: revealed ? undefined : "translateY(28px)",
@@ -90,8 +90,8 @@ function ReasonCard({ r, i, revealed }) {
             style={{
               fontFamily: "'JetBrains Mono', monospace",
               color: C.gold,
-              border: `1px solid ${C.panelBorder}`,
-              backgroundColor: "rgba(245,193,49,0.06)",
+              border: `1px solid ${C.panelBorder}33`,
+              backgroundColor: "rgba(244,185,3,0.06)",
             }}
           >
             {r.stat}

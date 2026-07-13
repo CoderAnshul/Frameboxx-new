@@ -1,14 +1,18 @@
 export const C = {
-  ink: "#141414",
-  inkSoft: "#000000ff",
-  panel: "#221f1e",
-  panelBorder: "#3a3736",
-  charcoal: "#363535",
-  slate: "#cececeff",
-  slateLight: "#8a8888",
-  gold: "#f5c131",
-  butter: "#fcd158",
-  paper: "#f7f4ec",
+  ink: "#1C1D1C",
+  inkSoft: "#1C1D1C",
+  panel: "#1C1D1C",
+  panelBorder: "#5C49B3",
+  charcoal: "#1C1D1C",
+  slate: "#F9F7F6",
+  slateLight: "rgba(249, 247, 246, 0.7)",
+  gold: "#F4B903",
+  butter: "#F4B903",
+  paper: "#F9F7F6",
+  yellow: "#F4B903",
+  deepPurple: "#5C49B3",
+  brandCharcoal: "#1C1D1C",
+  white: "#F9F7F6",
 };
 
 export const FONTS = `

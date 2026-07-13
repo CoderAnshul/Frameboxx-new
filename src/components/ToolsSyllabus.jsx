@@ -95,7 +95,7 @@ export default function ToolsSyllabus() {
       className="relative overflow-hidden border-b py-10 sm:py-14"
       style={{
         backgroundColor: C.inkSoft,
-        borderColor: "rgba(255,255,255,0.06)",
+        borderColor: C.panelBorder,
         fontFamily: "'Inter', sans-serif"
       }}
     >
@@ -105,7 +105,7 @@ export default function ToolsSyllabus() {
         
         .tool-badge {
           background-color: ${C.panel}66;
-          border: 1px solid rgba(255, 255, 255, 0.04);
+          border: 1px solid ${C.panelBorder}33;
           transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .tool-badge:hover {
@@ -117,7 +117,7 @@ export default function ToolsSyllabus() {
         
         .struct-card {
           background-color: ${C.panel}33;
-          border: 1px solid rgba(255, 255, 255, 0.03);
+          border: 1px solid ${C.panelBorder}22;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .struct-card:hover {
@@ -127,11 +127,11 @@ export default function ToolsSyllabus() {
         }
 
         .skill-row {
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid ${C.panelBorder}33;
           transition: all 0.3s ease;
         }
         .skill-row:hover {
-          background-color: rgba(255, 255, 255, 0.01);
+          background-color: rgba(92, 73, 179, 0.04);
           border-bottom-color: ${C.gold}33;
         }
         
@@ -149,7 +149,7 @@ export default function ToolsSyllabus() {
       <div 
         className="pointer-events-none absolute w-[500px] h-[500px] rounded-full" 
         style={{
-          background: `radial-gradient(circle, ${C.gold}05 0%, transparent 70%)`,
+          background: `radial-gradient(circle, rgba(244, 185, 3, 0.05) 0%, transparent 70%)`,
           top: "40%",
           left: "50%",
           transform: "translate(-50%, -50%)"
@@ -165,7 +165,7 @@ export default function ToolsSyllabus() {
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
           className="pb-10 border-b"
-          style={{ borderColor: "rgba(255,255,255,0.06)" }}
+          style={{ borderColor: C.panelBorder }}
         >
           <div className="mb-6 text-center relative">
             <span className="text-[10px] tracking-[0.25em] uppercase font-mono block mb-3" style={{ color: C.gold }}>
@@ -211,7 +211,7 @@ export default function ToolsSyllabus() {
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
           className="py-10 sm:py-12 border-b"
-          style={{ borderColor: "rgba(255,255,255,0.06)" }}
+          style={{ borderColor: C.panelBorder }}
         >
           <div className="mb-6">
             <span className="text-[10px] tracking-[0.25em] uppercase font-mono block mb-3" style={{ color: C.slateLight }}>
@@ -254,7 +254,7 @@ export default function ToolsSyllabus() {
                       {item.duration}
                     </span>
                   </div>
-                  <p className="text-[13.5px] leading-relaxed" style={{ color: "#a5a3a1" }}>
+                  <p className="text-[13.5px] leading-relaxed" style={{ color: C.slateLight }}>
                     {item.desc}
                   </p>
                 </motion.div>
@@ -333,7 +333,7 @@ export default function ToolsSyllabus() {
                         transition={{ duration: 0.3, ease: "easeOut" }}
                         className="overflow-hidden"
                       >
-                        <p className="text-[13.5px] leading-relaxed" style={{ color: "#a5a3a1" }}>
+                        <p className="text-[13.5px] leading-relaxed" style={{ color: C.slateLight }}>
                           {skill.desc}
                         </p>
                       </motion.div>
@@ -354,7 +354,7 @@ export default function ToolsSyllabus() {
           viewport={{ once: true }}
           variants={fadeInUp}
           className="mt-12 pt-6 border-t flex flex-col sm:flex-row items-center justify-between gap-4"
-          style={{ borderColor: "rgba(255,255,255,0.06)" }}
+          style={{ borderColor: C.panelBorder }}
         >
           <div className="flex items-center gap-2.5 font-mono text-[10px] sm:text-[11px] uppercase" style={{ color: C.slateLight }}>
             <ShieldCheck size={14} style={{ color: C.gold }} />

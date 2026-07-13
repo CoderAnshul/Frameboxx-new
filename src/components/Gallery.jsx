@@ -96,7 +96,7 @@ export default function ClassroomsGallery() {
         .gal-arrow {
           transition: transform 0.25s cubic-bezier(0.16,1,0.3,1), background-color 0.25s ease, border-color 0.25s ease;
         }
-        .gal-arrow:hover { transform: scale(1.08); border-color: rgba(245,193,49,0.7); background-color: rgba(245,193,49,0.12); }
+        .gal-arrow:hover { transform: scale(1.08); border-color: ${C.gold}b3; background-color: ${C.gold}1e; }
         .gal-arrow:active { transform: scale(0.96); }
 
         .gal-thumb {
@@ -129,7 +129,7 @@ export default function ClassroomsGallery() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(560px circle at 90% 0%, rgba(245,193,49,0.06), transparent 60%), radial-gradient(480px circle at 0% 100%, rgba(252,209,88,0.05), transparent 55%)",
+              `radial-gradient(560px circle at 90% 0%, ${C.gold}0f, transparent 60%), radial-gradient(480px circle at 0% 100%, ${C.gold}0d, transparent 55%)`,
           }}
         />
 
@@ -163,13 +163,13 @@ export default function ClassroomsGallery() {
             className="fade-up relative rounded-2xl overflow-hidden"
             style={{
               animationDelay: "0.12s",
-              border: `1px solid rgba(245,193,49,0.16)`,
+              border: `1px solid ${C.panelBorder}33`,
               boxShadow: "0 30px 70px -25px rgba(0,0,0,0.65)",
             }}
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
-            <div className="relative w-full aspect-[16/10] sm:aspect-[16/8]" style={{ backgroundColor: "#242323" }}>
+            <div className="relative w-full aspect-[16/10] sm:aspect-[16/8]" style={{ backgroundColor: C.ink }}>
               <AnimatePresence initial={false} custom={direction} mode="popLayout">
                 <motion.div
                   key={index}
@@ -203,7 +203,7 @@ export default function ClassroomsGallery() {
                   className="shrink-0 text-[11px] tracking-wide px-2.5 py-1 rounded-full"
                   style={{
                     color: C.gold,
-                    border: `1px solid rgba(245,193,49,0.35)`,
+                    border: `1px solid ${C.gold}55`,
                     backgroundColor: "rgba(0,0,0,0.35)",
                     fontFamily: "'JetBrains Mono', monospace",
                   }}
@@ -221,7 +221,7 @@ export default function ClassroomsGallery() {
                   width: 38,
                   height: 38,
                   backgroundColor: "rgba(0,0,0,0.35)",
-                  border: `1px solid rgba(245,193,49,0.35)`,
+                  border: `1px solid ${C.gold}55`,
                 }}
               >
                 <ChevronLeft size={18} style={{ color: C.paper }} />
@@ -234,7 +234,7 @@ export default function ClassroomsGallery() {
                   width: 38,
                   height: 38,
                   backgroundColor: "rgba(0,0,0,0.35)",
-                  border: `1px solid rgba(245,193,49,0.35)`,
+                  border: `1px solid ${C.gold}55`,
                 }}
               >
                 <ChevronRight size={18} style={{ color: C.paper }} />
@@ -253,7 +253,7 @@ export default function ClassroomsGallery() {
                 style={{
                   height: 6,
                   width: i === index ? 26 : 6,
-                  backgroundColor: i === index ? C.gold : "rgba(245,193,49,0.25)",
+                  backgroundColor: i === index ? C.gold : `${C.gold}40`,
                 }}
               />
             ))}

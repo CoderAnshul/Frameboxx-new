@@ -67,7 +67,7 @@ function BidBoard() {
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   fontSize: "9px",
-                  color: C.gold,
+                  color: "#8B7AE5",
                   animationDelay: `${c.delay}s`,
                   animationDuration: `${c.dur}s`,
                 }}
@@ -78,12 +78,11 @@ function BidBoard() {
           </div>
         ))}
       </div>
-      {/* cursor spotlight */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(360px circle at var(--mx) var(--my), rgba(245,193,49,0.14), transparent 65%)",
+            "radial-gradient(360px circle at var(--mx) var(--my), rgba(92, 73, 179, 0.22), transparent 65%)",
           transition: "background 60ms linear",
         }}
       />
@@ -185,8 +184,8 @@ function GenGrid() {
         className="badge-pulse pointer-events-none absolute right-[9%] top-[14%] hidden sm:flex h-10 w-10 items-center justify-center rounded-[4px]"
         style={{
           border: `1px solid ${C.gold}`,
-          backgroundColor: "#201f1f",
-          boxShadow: `0 0 18px rgba(245,193,49,0.4)`,
+          backgroundColor: C.ink,
+          boxShadow: `0 0 18px rgba(244,185,3,0.4)`,
         }}
       >
         <span
@@ -202,7 +201,7 @@ function GenGrid() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(360px circle at var(--mx) var(--my), rgba(245,193,49,0.14), transparent 65%)",
+            "radial-gradient(360px circle at var(--mx) var(--my), rgba(244,185,3,0.14), transparent 65%)",
           transition: "background 60ms linear",
         }}
       />
@@ -342,7 +341,7 @@ function FieldLabel({ children }) {
 }
 
 const inputStyle = {
-  backgroundColor: "#2a2827",
+  backgroundColor: C.ink,
   border: `1px solid ${C.panelBorder}`,
   color: C.paper,
 };
@@ -466,14 +465,14 @@ function ConsoleForm() {
 /* ---------------------------------------------------------
    MAIN HERO COMPONENT
 --------------------------------------------------------- */
-export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "marketing", onToggleMode }) {
+export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "marketing", onToggleMode, hideNavbar = false }) {
   return (
     <>
       <style>{`
         ${FONTS}
         * { box-sizing: border-box; }
         .bidcell {
-          background-color: rgba(245,193,49,0.05);
+          background-color: rgba(92, 73, 179, 0.05);
           border-radius: 3px;
           animation-name: bidflash;
           animation-iteration-count: infinite;
@@ -485,9 +484,9 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
           opacity: 0;
         }
         @keyframes bidflash {
-          0%, 82% { background-color: rgba(245,193,49,0.045); }
-          90% { background-color: rgba(245,193,49,0.32); }
-          100% { background-color: rgba(245,193,49,0.045); }
+          0%, 82% { background-color: rgba(92, 73, 179, 0.05); }
+          90% { background-color: rgba(92, 73, 179, 0.38); }
+          100% { background-color: rgba(92, 73, 179, 0.05); }
         }
         @keyframes bidnumflash {
           0%, 80% { opacity: 0; transform: translateY(2px); }
@@ -496,7 +495,7 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
         }
 
         .gencell {
-          background-color: rgba(245,193,49,0.05);
+          background-color: rgba(244,185,3,0.05);
           border-radius: 3px;
           animation-name: genflash;
           animation-iteration-count: infinite;
@@ -508,9 +507,9 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
           opacity: 0;
         }
         @keyframes genflash {
-          0%, 82% { background-color: rgba(245,193,49,0.045); }
-          90% { background-color: rgba(245,193,49,0.32); }
-          100% { background-color: rgba(245,193,49,0.045); }
+          0%, 82% { background-color: rgba(244,185,3,0.045); }
+          90% { background-color: rgba(244,185,3,0.32); }
+          100% { background-color: rgba(244,185,3,0.045); }
         }
         @keyframes gentagflash {
           0%, 80% { opacity: 0; transform: translateY(2px); }
@@ -526,8 +525,8 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
 
         .badge-pulse { animation: badgePulse 3.4s ease-in-out infinite; }
         @keyframes badgePulse {
-          0%, 100% { box-shadow: 0 0 18px rgba(245,193,49,0.4); }
-          50% { box-shadow: 0 0 28px rgba(245,193,49,0.7); }
+          0%, 100% { box-shadow: 0 0 18px rgba(244,185,3,0.4); }
+          50% { box-shadow: 0 0 28px rgba(244,185,3,0.7); }
         }
 
         .bidtag-in { animation: bidtagIn 0.6s cubic-bezier(0.16,1,0.3,1) both; animation-delay: 0.4s; }
@@ -541,76 +540,64 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
           from { opacity: 0; transform: translateY(14px); }
           to { opacity: 1; transform: translateY(0); }
         }
-        select option { background-color: #2a2827; }
+        select option { background-color: ${C.ink}; }
         @media (prefers-reduced-motion: reduce) {
           .bidcell, .bidnum, .gencell, .gentag, .pulse-dot, .badge-pulse, .bidtag-in, .fade-up { animation: none !important; }
         }
       `}</style>
 
-      {/* ---------------- ANNOUNCEMENT BAR (Mobile & screens below tablet) ---------------- */}
-      <div
-        className="md:hidden w-full py-2.5 px-4 text-center flex items-center justify-center gap-2 text-[12.5px] font-medium border-b"
-        style={{
-          backgroundColor: C.panel,
-          borderColor: "rgba(255,255,255,0.06)",
-          color: C.paper,
-          fontFamily: "'Space Grotesk', sans-serif",
-        }}
-      >
-        <Phone size={12} style={{ color: C.gold }} />
-        <span style={{ color: C.slateLight }}>Call Now:</span>
-        <a href="tel:+919327024272" className="hover:underline" style={{ color: C.gold }}>
-          +91 93270 24272
-        </a>
-      </div>
-
-      {/* ---------------- NAV ---------------- */}
-      <nav
-        className="relative z-20 max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-10 py-4 border-b"
-        style={{ borderColor: "rgba(255,255,255,0.06)", backgroundColor: C.inkSoft }}
-      >
-        <div className="flex items-center gap-3">
-          <img
-            src="/logo.png"
-            alt="Frameboxx Logo"
-            className="h-8 sm:h-9 w-auto object-contain"
-          />
-          <div className="hidden sm:flex flex-col leading-none border-l pl-3" style={{ borderColor: C.panelBorder }}>
-            <span className="text-[9px] tracking-[0.16em]" style={{ color: C.slateLight, fontFamily: "'JetBrains Mono', monospace" }}>
-              INSTITUTE OF EMERGING MEDIA
-            </span>
-            <span className="text-[9px] mt-0.5" style={{ color: C.gold, fontFamily: "'JetBrains Mono', monospace" }}>
-              Powered by UID
-            </span>
-          </div>
-        </div>
-        <div className="flex items-center gap-2.5">
-          <button
-            onClick={onToggleMode}
-            className="flex items-center gap-2 rounded-full px-4 py-2 text-[12.5px] font-semibold transition-transform active:scale-[0.98] cursor-pointer"
+      {!hideNavbar && (
+        <>
+          {/* ---------------- ANNOUNCEMENT BAR (Mobile & screens below tablet) ---------------- */}
+          <div
+            className="md:hidden w-full py-2.5 px-4 text-center flex items-center justify-center gap-2 text-[12.5px] font-medium border-b"
             style={{
-              background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-              color: C.ink,
+              backgroundColor: C.panel,
+              borderColor: C.panelBorder,
+              color: C.paper,
               fontFamily: "'Space Grotesk', sans-serif",
             }}
           >
-            <span className="hidden sm:inline">
-              {currentMode === "marketing" ? "Switch to AI Content Creation" : "Switch to Digital Marketing"}
-            </span>
-            <span className="sm:hidden">
-              {currentMode === "marketing" ? "AI Creation" : "Marketing"}
-            </span>
-          </button>
-          <a
-            href="tel:+919327024272"
-            className="hidden md:flex items-center gap-2 rounded-full px-4 py-2 text-[12.5px] font-medium transition-colors"
-            style={{ backgroundColor: C.panel, color: C.paper, border: `1px solid ${C.panelBorder}` }}
+            <Phone size={12} style={{ color: C.gold }} />
+            <span style={{ color: C.slateLight }}>Call Now:</span>
+            <a href="tel:+919327024272" className="hover:underline" style={{ color: C.gold }}>
+              +91 93270 24272
+            </a>
+          </div>
+
+          {/* ---------------- NAV ---------------- */}
+          <nav
+            className="relative z-20 max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-10 py-4 border-b"
+            style={{ borderColor: `${C.panelBorder}33`, backgroundColor: C.inkSoft }}
           >
-            <Phone size={13} style={{ color: C.gold }} />
-            <span className="hidden sm:inline">Call Now:</span> +91 93270 24272
-          </a>
-        </div>
-      </nav>
+            <div className="flex items-center gap-3">
+              <img
+                src="/logo.png"
+                alt="Frameboxx Logo"
+                className="h-8 sm:h-9 w-auto object-contain"
+              />
+              <div className="hidden sm:flex flex-col leading-none border-l pl-3" style={{ borderColor: C.panelBorder }}>
+                <span className="text-[9px] tracking-[0.16em]" style={{ color: C.slateLight, fontFamily: "'JetBrains Mono', monospace" }}>
+                  INSTITUTE OF EMERGING MEDIA
+                </span>
+                <span className="text-[9px] mt-0.5" style={{ color: C.gold, fontFamily: "'JetBrains Mono', monospace" }}>
+                  Powered by UID
+                </span>
+              </div>
+            </div>
+            <div className="flex items-center gap-2.5">
+              <a
+                href="tel:+919327024272"
+                className="hidden md:flex items-center gap-2 rounded-full px-4 py-2 text-[12.5px] font-medium transition-colors"
+                style={{ backgroundColor: C.panel, color: C.paper, border: `1px solid ${C.panelBorder}` }}
+              >
+                <Phone size={13} style={{ color: C.gold }} />
+                <span className="hidden sm:inline">Call Now:</span> +91 93270 24272
+              </a>
+            </div>
+          </nav>
+        </>
+      )}
 
       {/* ---------------- HERO ---------------- */}
       <section className="relative overflow-hidden">
@@ -623,12 +610,12 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
               <>
                 <div
                   className="fade-up inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 mb-7"
-                  style={{ border: `1px solid ${C.panelBorder}`, backgroundColor: "rgba(245,193,49,0.05)" }}
+                  style={{ border: `1px solid ${C.panelBorder}33`, backgroundColor: "rgba(92, 73, 179, 0.08)" }}
                 >
-                  <Radio size={12} style={{ color: C.gold }} />
+                  <Radio size={12} style={{ color: "#8B7AE5" }} />
                   <span
                     className="text-[11px] tracking-[0.12em]"
-                    style={{ fontFamily: "'JetBrains Mono', monospace", color: C.butter }}
+                    style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B7AE5" }}
                   >
                     LIVE COHORT ENROLLING · ADVANCED CERTIFICATION
                   </span>
@@ -651,8 +638,8 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
                       <span
                         className="bidtag-in inline-flex items-center gap-2 rounded-lg px-4 py-1"
                         style={{
-                          background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-                          color: C.ink,
+                          background: `linear-gradient(135deg, ${C.deepPurple}, #7A62E3)`,
+                          color: C.paper,
                         }}
                       >
                         algorithm
@@ -669,7 +656,7 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
 
                 <p
                   className="fade-up text-[15.5px] sm:text-lg leading-relaxed max-w-xl"
-                  style={{ color: "#c9c7c5", animationDelay: "0.16s" }}
+                  style={{ color: C.slateLight, animationDelay: "0.16s" }}
                 >
                   Every scroll, click, and purchase runs through a split-second auction —
                   and AI decides who wins it. Learn to run that auction yourself: Google,
@@ -680,7 +667,7 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
               <>
                 <div
                   className="fade-up inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 mb-7"
-                  style={{ border: `1px solid ${C.panelBorder}`, backgroundColor: "rgba(245,193,49,0.05)" }}
+                  style={{ border: `1px solid ${C.panelBorder}33`, backgroundColor: "rgba(244,185,3,0.05)" }}
                 >
                   <Sparkles size={12} style={{ color: C.gold }} />
                   <span
@@ -726,7 +713,7 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
 
                 <p
                   className="fade-up text-[15.5px] sm:text-lg leading-relaxed max-w-xl"
-                  style={{ color: "#c9c7c5", animationDelay: "0.16s" }}
+                  style={{ color: C.slateLight, animationDelay: "0.16s" }}
                 >
                   Every headline, edit, and visual now passes through a model
                   before it ships — and the creators winning attention are the
@@ -742,8 +729,10 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
                 onClick={onViewCurriculum}
                 className="rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:scale-[1.03] cursor-pointer"
                 style={{
-                  background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-                  color: C.ink,
+                  background: currentMode === "marketing"
+                    ? `linear-gradient(135deg, ${C.deepPurple}, #7A62E3)`
+                    : `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
+                  color: currentMode === "marketing" ? C.paper : C.ink,
                   fontFamily: "'Space Grotesk', sans-serif",
                 }}
               >
@@ -752,7 +741,11 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
               <button
                 onClick={onBookDemo}
                 className="rounded-full px-6 py-3 text-sm font-semibold border transition-colors cursor-pointer"
-                style={{ borderColor: C.panelBorder, color: C.paper, fontFamily: "'Space Grotesk', sans-serif" }}
+                style={{
+                  borderColor: currentMode === "marketing" ? C.gold : C.panelBorder,
+                  color: currentMode === "marketing" ? C.gold : C.paper,
+                  fontFamily: "'Space Grotesk', sans-serif"
+                }}
               >
                 Book a free demo
               </button>
@@ -760,7 +753,7 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
 
             <div
               className="fade-up mt-9 pt-6 border-t w-full max-w-xl"
-              style={{ borderColor: "rgba(255,255,255,0.07)", animationDelay: "0.3s" }}
+              style={{ borderColor: C.panelBorder, animationDelay: "0.3s" }}
             >
               {currentMode === "marketing" ? <AuctionLog /> : <GenerationLog />}
             </div>
@@ -773,7 +766,7 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
                 ? ["Google", "Microsoft", "Frameboxx"]
                 : ["Midjourney", "Runway", "Adobe Firefly"]
               ).map((n) => (
-                <span key={n} className="text-sm font-medium" style={{ color: "#dedcda", fontFamily: "'Space Grotesk', sans-serif" }}>
+                <span key={n} className="text-sm font-medium" style={{ color: C.paper, fontFamily: "'Space Grotesk', sans-serif" }}>
                   {n}
                 </span>
               ))}

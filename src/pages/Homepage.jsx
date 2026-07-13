@@ -7,6 +7,7 @@ import About from "../components/About";
 import Learning from "../components/Learning";
 import Gallery from "../components/Gallery";
 import TestimonialsReel from "../components/Testimonials";
+import AiHomepage from "./AiHomepage";
 import Footer from "../components/Footer";
 
 export default function Homepage() {
@@ -58,6 +59,26 @@ export default function Homepage() {
       </div>
       <Gallery/>
       <TestimonialsReel/>
+
+      {/* Separation Section */}
+      <div className="relative py-16 flex flex-col items-center justify-center overflow-hidden">
+        {/* Line divider */}
+        <div className="w-full max-w-7xl px-5 sm:px-10 flex items-center gap-4">
+          <div className="h-[1px] flex-1" style={{ backgroundColor: "rgba(255,255,255,0.06)" }} />
+          <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border" style={{ borderColor: C.panelBorder, backgroundColor: C.panel }}>
+            <span className="relative flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full rounded-full opacity-75 pulse-dot" style={{ backgroundColor: C.gold }} />
+              <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: C.gold }} />
+            </span>
+            <span style={{ fontSize: "11px", fontFamily: "'Space Grotesk', sans-serif", letterSpacing: "0.1em", color: C.paper }}>
+              AI CONTENT CREATION TRACK
+            </span>
+          </div>
+          <div className="h-[1px] flex-1" style={{ backgroundColor: "rgba(255,255,255,0.06)" }} />
+        </div>
+      </div>
+
+      <AiHomepage isNested={true} />
       <Footer />
     </div>
   );

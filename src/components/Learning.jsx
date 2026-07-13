@@ -63,13 +63,14 @@ function LotCard({ phase, index }) {
     }, 4200 + index * 900);
     return () => clearInterval(t);
   }, [index]);
+  const isEven = index % 2 === 0;
 
   return (
     <div
-      className="lot-card relative rounded-2xl p-6 sm:p-8 flex flex-col"
+      className={`lot-card lot-card--${isEven ? "even" : "odd"} relative rounded-2xl p-6 sm:p-8 flex flex-col`}
       style={{
-        backgroundColor: "rgba(245,193,49,0.03)",
-        border: `1px solid rgba(245,193,49,0.16)`,
+        backgroundColor: `${C.panel}33`,
+        border: `1px solid ${isEven ? C.gold + "33" : C.panelBorder + "33"}`,
       }}
     >
       <div className="flex items-start justify-between gap-4 mb-5">
@@ -77,8 +78,10 @@ function LotCard({ phase, index }) {
           <span
             className="rounded-md px-2.5 py-1 text-[11px] font-semibold tracking-[0.14em]"
             style={{
-              background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-              color: C.ink,
+              background: isEven
+                ? `linear-gradient(135deg, ${C.gold}, ${C.butter})`
+                : `linear-gradient(135deg, ${C.deepPurple}, #7A62E3)`,
+              color: isEven ? C.ink : C.paper,
               fontFamily: "'JetBrains Mono', monospace",
             }}
           >
@@ -93,7 +96,7 @@ function LotCard({ phase, index }) {
         </div>
         <span
           className="text-[10.5px] tracking-wide shrink-0"
-          style={{ color: C.gold, fontFamily: "'JetBrains Mono', monospace" }}
+          style={{ color: isEven ? C.gold : "#8B7AE5", fontFamily: "'JetBrains Mono', monospace" }}
         >
           {seats} bidding
         </span>
@@ -113,9 +116,9 @@ function LotCard({ phase, index }) {
               size={17}
               strokeWidth={2.2}
               className="mt-0.5 shrink-0"
-              style={{ color: C.gold }}
+              style={{ color: isEven ? C.gold : "#8B7AE5" }}
             />
-            <span className="text-[14.5px] leading-relaxed" style={{ color: "#d8d6d2" }}>
+            <span className="text-[14.5px] leading-relaxed" style={{ color: C.slateLight }}>
               {item}
             </span>
           </li>
@@ -124,11 +127,16 @@ function LotCard({ phase, index }) {
 
       <div
         className="lot-bar mt-7 h-[3px] w-full rounded-full overflow-hidden"
-        style={{ backgroundColor: "rgba(255,255,255,0.06)" }}
+        style={{ backgroundColor: `${C.panelBorder}33` }}
       >
         <div
           className="lot-bar-fill h-full rounded-full"
-          style={{ background: `linear-gradient(90deg, ${C.gold}, ${C.butter})` }}
+          style={{
+            background: isEven
+              ? `linear-gradient(90deg, ${C.gold}, ${C.butter})`
+              : `linear-gradient(90deg, ${C.deepPurple}, #7A62E3)`,
+            width: isEven ? "35%" : "65%"
+          }}
         />
       </div>
     </div>
@@ -139,10 +147,11 @@ function LotCard({ phase, index }) {
    TIMELINE ROW — one step of the ceremony, alternating
    left/right of a center spine. Pure CSS grid handles the
    alternation and the mobile collapse, no JS positioning.
---------------------------------------------------------- */
+ --------------------------------------------------------- */
 function TimelineRow({ step, index, inView }) {
   const n = String(index + 1).padStart(2, "0");
   const side = index % 2 === 0 ? "left" : "right";
+  const isEven = index % 2 === 0;
 
   return (
     <div
@@ -150,14 +159,14 @@ function TimelineRow({ step, index, inView }) {
       style={{ transitionDelay: inView ? `${0.08 + index * 0.06}s` : "0s" }}
     >
       <div className="tl-dot-col">
-        <div className="tl-dot">
-          <span style={{ color: C.gold, fontFamily: "'JetBrains Mono', monospace" }}>{n}</span>
+        <div className="tl-dot" style={{ borderColor: `${isEven ? C.gold : C.deepPurple}55` }}>
+          <span style={{ color: isEven ? C.gold : "#8B7AE5", fontFamily: "'JetBrains Mono', monospace" }}>{n}</span>
         </div>
       </div>
-      <div className="tl-card">
+      <div className="tl-card" style={{ borderColor: `${isEven ? C.gold + "15" : C.panelBorder + "33"}` }}>
         <span
           className="text-[10px] tracking-[0.16em]"
-          style={{ color: C.gold, fontFamily: "'JetBrains Mono', monospace" }}
+          style={{ color: isEven ? C.gold : "#8B7AE5", fontFamily: "'JetBrains Mono', monospace" }}
         >
           {step.tag}
         </span>
@@ -213,7 +222,7 @@ function Podium({ inView }) {
             width: 84,
             height: 84,
             background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-            boxShadow: `0 0 44px rgba(245,193,49,0.5)`,
+            boxShadow: `0 0 44px ${C.gold}80`,
           }}
         >
           <Trophy size={34} strokeWidth={2} style={{ color: C.ink }} />
@@ -287,8 +296,8 @@ export default function Curriculum() {
         .lot-card { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), border-color 0.35s ease, background-color 0.35s ease; }
         .lot-card:hover {
           transform: translateY(-6px);
-          border-color: rgba(245,193,49,0.5);
-          background-color: rgba(245,193,49,0.05);
+          border-color: ${C.gold}55;
+          background-color: rgba(92, 73, 179, 0.05);
         }
         .lot-bar-fill { width: 22%; transition: width 0.6s cubic-bezier(0.16,1,0.3,1); }
         .lot-card:hover .lot-bar-fill { width: 100%; }
@@ -307,7 +316,7 @@ export default function Curriculum() {
           bottom: 92px;
           left: 50%;
           width: 2px;
-          background: rgba(255,255,255,0.08);
+          background: ${C.panelBorder}33;
           transform: translateX(-1px);
         }
         .tl-spine-fill {
@@ -315,7 +324,7 @@ export default function Curriculum() {
           transform: scaleY(0);
           transform-origin: top;
           transition: transform 1.4s cubic-bezier(0.16,1,0.3,1) 0.1s;
-          box-shadow: 0 0 12px rgba(245,193,49,0.5);
+          box-shadow: 0 0 12px rgba(244, 185, 3, 0.5);
         }
         .in-view .tl-spine-fill { transform: scaleY(1); }
 
@@ -341,7 +350,7 @@ export default function Curriculum() {
           justify-content: center;
           font-size: 12px;
           font-weight: 600;
-          border: 1.5px solid rgba(245,193,49,0.4);
+          border: 1.5px solid ${C.panelBorder}55;
           background: ${C.ink};
           box-shadow: 0 0 0 6px ${C.ink};
           position: relative;
@@ -354,8 +363,8 @@ export default function Curriculum() {
         .tl-card {
           border-radius: 12px;
           padding: 12px 16px;
-          background: rgba(245,193,49,0.035);
-          border: 1px solid rgba(245,193,49,0.12);
+          background: ${C.panel}33;
+          border: 1px solid ${C.panelBorder}33;
         }
 
         .tl-podium-slot { min-height: 40px; }
@@ -364,11 +373,11 @@ export default function Curriculum() {
         .podium-wrap.in-view { opacity: 1; transform: translateY(0) scale(1); }
 
         .podium-beam {
-          background: conic-gradient(from 0deg, transparent 0%, rgba(245,193,49,0.18) 8%, transparent 16%, transparent 50%, rgba(245,193,49,0.12) 58%, transparent 66%, transparent 100%);
+          background: conic-gradient(from 0deg, transparent 0%, rgba(244, 185, 3, 0.18) 8%, transparent 16%, transparent 50%, rgba(244, 185, 3, 0.12) 58%, transparent 66%, transparent 100%);
           animation: spin 7s linear infinite;
         }
         .podium-ring {
-          border: 1px solid rgba(245,193,49,0.25);
+          border: 1px solid ${C.panelBorder}44;
           animation: ringPulse 2.4s cubic-bezier(0,0,0.2,1) infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
@@ -417,7 +426,7 @@ export default function Curriculum() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(600px circle at 15% 0%, rgba(245,193,49,0.07), transparent 60%), radial-gradient(500px circle at 100% 100%, rgba(252,209,88,0.06), transparent 55%)",
+              "radial-gradient(600px circle at 15% 0%, rgba(244, 185, 3, 0.07), transparent 60%), radial-gradient(500px circle at 100% 100%, rgba(244, 185, 3, 0.06), transparent 55%)",
           }}
         />
 

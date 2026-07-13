@@ -51,7 +51,7 @@ function ProgramImage({ revealed }) {
     >
       <div
         className="absolute -bottom-4 -right-4 w-full h-full rounded-3xl"
-        style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.butter})` }}
+        style={{ background: `linear-gradient(135deg, ${C.deepPurple}, #7A62E3)` }}
         aria-hidden
       />
       <div
@@ -65,11 +65,11 @@ function ProgramImage({ revealed }) {
         />
         <div
           className="absolute inset-0"
-          style={{ background: `linear-gradient(180deg, transparent 55%, rgba(20,20,20,0.55) 100%)` }}
+          style={{ background: `linear-gradient(180deg, transparent 55%, rgba(28,27,27,0.55) 100%)` }}
         />
         <div
           className="absolute bottom-4 left-4 right-4 flex items-center gap-2 px-3 py-2 rounded-xl"
-          style={{ backgroundColor: "rgba(28,27,27,0.72)", border: `1px solid ${C.panelBorder}`, backdropFilter: "blur(6px)" }}
+          style={{ backgroundColor: `${C.ink}cc`, border: `1px solid ${C.panelBorder}33`, backdropFilter: "blur(6px)" }}
         >
           <span className="relative flex h-1.5 w-1.5 shrink-0">
             <span className="absolute inline-flex h-full w-full rounded-full opacity-75 pc-pulse" style={{ backgroundColor: C.gold }} />
@@ -95,7 +95,7 @@ function HighlightRow({ text, i, revealed }) {
     <li
       className="flex items-center gap-3 py-3.5 transition-all duration-500"
       style={{
-        borderTop: i === 0 ? "none" : `1px solid ${C.panelBorder}`,
+        borderTop: i === 0 ? "none" : `1px solid ${C.panelBorder}33`,
         opacity: revealed ? 1 : 0,
         transform: revealed ? "translateY(0)" : "translateY(10px)",
         transitionDelay: `${i * 70}ms`,
@@ -103,9 +103,9 @@ function HighlightRow({ text, i, revealed }) {
     >
       <span
         className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center"
-        style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.butter})` }}
+        style={{ background: `linear-gradient(135deg, ${C.deepPurple}, #7A62E3)` }}
       >
-        <CheckCircle2 size={13} style={{ color: C.ink }} strokeWidth={2.5} />
+        <CheckCircle2 size={13} style={{ color: C.paper }} strokeWidth={2.5} />
       </span>
       <span className="text-[14.5px]" style={{ color: C.paper, fontFamily: "'Inter', sans-serif" }}>
         {text}
@@ -123,7 +123,7 @@ function HighlightsPanel({ revealed }) {
       className="rounded-3xl p-7 sm:p-9 lg:p-10"
       style={{
         backgroundColor: C.ink,
-        border: `1px solid ${C.panelBorder}`,
+        border: `1px solid ${C.panelBorder}33`,
         boxShadow: "0 30px 60px -24px rgba(0,0,0,0.6)",
       }}
     >

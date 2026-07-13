@@ -10,7 +10,7 @@ export default function Footer() {
       className="relative border-t py-12 sm:py-16"
       style={{
         backgroundColor: C.ink,
-        borderColor: "rgba(255,255,255,0.06)",
+        borderColor: `${C.panelBorder}33`,
         fontFamily: "'Inter', sans-serif"
       }}
     >
@@ -29,7 +29,7 @@ export default function Footer() {
         
         .contact-pill {
           background-color: ${C.panel}33;
-          border: 1px solid rgba(255, 255, 255, 0.04);
+          border: 1px solid ${C.panelBorder}33;
           transition: all 0.3s ease;
         }
         .contact-pill:hover {
@@ -60,6 +60,7 @@ export default function Footer() {
                 src="/logo.png" 
                 alt="Frameboxx Logo" 
                 className="h-10 sm:h-12 w-auto object-contain" 
+                
               />
             </div>
             <p className="text-xs sm:text-[13px] leading-relaxed" style={{ color: C.slateLight }}>
@@ -104,7 +105,7 @@ export default function Footer() {
           <div>
             <h4 
               className="text-xs font-bold uppercase tracking-wider mb-5" 
-              style={{ fontFamily: "'Space Grotesk', sans-serif", color: C.gold }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#8B7AE5" }}
             >
               Curriculum Core
             </h4>
@@ -144,7 +145,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="contact-pill p-3 rounded-xl flex items-center gap-3"
             >
-              <MessageSquare size={14} style={{ color: C.gold }} />
+              <MessageSquare size={14} style={{ color: "#8B7AE5" }} />
               <div className="flex flex-col text-xs">
                 <span style={{ color: C.slateLight }}>WHATSAPP SUPPORT</span>
                 <span className="font-semibold" style={{ color: C.paper }}>Chat with us</span>
@@ -166,7 +167,7 @@ export default function Footer() {
         </div>
 
         {/* Horizontal Divider */}
-        <div className="h-px w-full my-6" style={{ backgroundColor: "rgba(255,255,255,0.06)" }} />
+        <div className="h-px w-full my-6" style={{ backgroundColor: `${C.panelBorder}33` }} />
 
         {/* Footer Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-mono text-zinc-500">

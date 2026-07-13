@@ -134,7 +134,7 @@ export default function CurriculumOverview() {
       className="relative border-t border-b py-16 sm:py-20"
       style={{
         backgroundColor: C.inkSoft,
-        borderColor: "rgba(255,255,255,0.06)",
+        borderColor: C.panelBorder,
         fontFamily: "'Inter', sans-serif",
         overflow: "clip"
       }}
@@ -156,11 +156,11 @@ export default function CurriculumOverview() {
         }
         
         .tab-menu-item {
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+          border-bottom: 1px solid ${C.panelBorder}33;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .tab-menu-item:hover {
-          background-color: rgba(255, 255, 255, 0.01);
+          background-color: rgba(92, 73, 179, 0.04);
         }
         .tab-menu-item.active {
           border-left: 3px solid ${C.gold};
@@ -169,7 +169,7 @@ export default function CurriculumOverview() {
         
         .hud-card {
           background-color: ${C.panel}33;
-          border: 1px solid rgba(255, 255, 255, 0.04);
+          border: 1px solid ${C.panelBorder}33;
           transition: all 0.3s ease;
         }
         .hud-card:hover {
@@ -226,7 +226,7 @@ export default function CurriculumOverview() {
         <span className="crosshair -bottom-3.5 -right-3.5">+</span>
 
         {/* HERO TITLE HEADER */}
-        <div className="mb-12 border-b pb-8" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+        <div className="mb-12 border-b pb-8" style={{ borderColor: C.panelBorder }}>
           <span className="text-[10px] tracking-[0.3em] font-mono block mb-2" style={{ color: C.gold }}>
             // ACADEMIC FRAMEWORK
           </span>
@@ -242,8 +242,8 @@ export default function CurriculumOverview() {
         <div className="studio-layout items-start">
           
           {/* LEFT COLUMN: NAVIGATION CONSOLE TABS */}
-          <div className="sticky-sidebar flex flex-col border rounded-2xl overflow-hidden" style={{ borderColor: "rgba(255,255,255,0.06)", backgroundColor: `${C.panel}22` }}>
-            <div className="px-5 py-4 border-b flex items-center justify-between" style={{ borderColor: "rgba(255,255,255,0.06)", backgroundColor: `${C.panel}44` }}>
+          <div className="sticky-sidebar flex flex-col border rounded-2xl overflow-hidden" style={{ borderColor: C.panelBorder, backgroundColor: `${C.panel}22` }}>
+            <div className="px-5 py-4 border-b flex items-center justify-between" style={{ borderColor: C.panelBorder, backgroundColor: `${C.panel}44` }}>
               <span className="font-mono text-[10px] uppercase tracking-wider" style={{ color: C.slateLight }}>
                 SELECT MODULE PANEL
               </span>
@@ -283,7 +283,7 @@ export default function CurriculumOverview() {
               })}
             </div>
 
-            <div className="px-5 py-4 border-t flex items-center gap-3 font-mono text-[10px]" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+            <div className="px-5 py-4 border-t flex items-center gap-3 font-mono text-[10px]" style={{ borderColor: C.panelBorder }}>
               <span className="glow-dot" />
               <span style={{ color: C.slateLight }}>MODULE TYPE: 144 HOURS TRAINING</span>
             </div>
@@ -315,7 +315,7 @@ export default function CurriculumOverview() {
                     </span>
                     <ul className="space-y-2.5">
                       {LEARNING_OBJECTIVES.map((item, idx) => (
-                        <li key={idx} className="flex gap-2.5 text-[13.5px] sm:text-[14px] leading-relaxed" style={{ color: "#c9c7c5" }}>
+                        <li key={idx} className="flex gap-2.5 text-[13.5px] sm:text-[14px] leading-relaxed" style={{ color: C.slateLight }}>
                           <span className="font-mono text-[10px] pt-0.5" style={{ color: C.gold }}>&gt;</span>
                           <span>{item}</span>
                         </li>
@@ -337,7 +337,7 @@ export default function CurriculumOverview() {
                           </li>
                         ))}
                       </ul>
-                      <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider block border-t pt-2 mt-3" style={{ borderColor: "rgba(255,255,255,0.04)", color: C.slateLight }}>
+                      <span className="text-[11px] sm:text-xs font-mono uppercase tracking-wider block border-t pt-2 mt-3" style={{ borderColor: `${C.panelBorder}33`, color: C.slateLight }}>
                         Focus: Short-form + mobile-first content
                       </span>
                     </div>
@@ -353,7 +353,7 @@ export default function CurriculumOverview() {
                       </div>
                       <div className="grid grid-cols-2 gap-2 text-xs sm:text-[13px] font-mono">
                         {SPECS.map((spec, idx) => (
-                          <div key={idx} className="p-2.5 rounded-lg border" style={{ borderColor: "rgba(255,255,255,0.03)", backgroundColor: "rgba(255,255,255,0.01)" }}>
+                          <div key={idx} className="p-2.5 rounded-lg border" style={{ borderColor: `${C.panelBorder}22`, backgroundColor: `${C.panel}33` }}>
                             <span className="block text-[10px]" style={{ color: C.slateLight }}>{spec.label}</span>
                             <span className="block font-semibold mt-0.5" style={{ color: C.gold }}>{spec.val}</span>
                           </div>
@@ -380,7 +380,7 @@ export default function CurriculumOverview() {
                     </span>
                     <div className="grid sm:grid-cols-2 gap-3">
                       {TIMELINE.map((w, idx) => (
-                        <div key={idx} className="p-3 border rounded-xl" style={{ borderColor: "rgba(255,255,255,0.03)", backgroundColor: "rgba(255,255,255,0.01)" }}>
+                        <div key={idx} className="p-3 border rounded-xl" style={{ borderColor: `${C.panelBorder}22`, backgroundColor: `${C.panel}33` }}>
                           <div className="flex justify-between items-baseline mb-1">
                             <span className="font-mono text-xs sm:text-[13px] font-bold" style={{ color: C.gold }}>{w.week}</span>
                             <span className="text-xs sm:text-[13px] font-bold uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif", color: C.paper }}>{w.phase}</span>
@@ -413,7 +413,7 @@ export default function CurriculumOverview() {
                           { col1: "Practical", col2: "60 hrs" },
                           { col1: "Project Submission", col2: "24 hrs" }
                         ].map((row, idx) => (
-                          <div key={idx} className="flex justify-between py-0.5 border-b" style={{ borderColor: "rgba(255,255,255,0.02)" }}>
+                          <div key={idx} className="flex justify-between py-0.5 border-b" style={{ borderColor: `${C.panelBorder}11` }}>
                             <span style={{ color: C.slateLight }}>{row.col1}</span>
                             <span className="font-semibold" style={{ color: C.paper }}>{row.col2}</span>
                           </div>
@@ -469,13 +469,13 @@ export default function CurriculumOverview() {
                     </span>
                     <div className="grid sm:grid-cols-3 gap-3">
                       {TOOLS.map((tGroup, idx) => (
-                        <div key={idx} className="p-3 border rounded-xl" style={{ borderColor: "rgba(255,255,255,0.03)", backgroundColor: "rgba(255,255,255,0.01)" }}>
+                        <div key={idx} className="p-3 border rounded-xl" style={{ borderColor: `${C.panelBorder}22`, backgroundColor: `${C.panel}33` }}>
                           <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider block mb-2" style={{ color: C.slateLight }}>
                             {tGroup.category}
                           </span>
                           <div className="flex flex-wrap gap-1.5">
                             {tGroup.list.map((t) => (
-                              <span key={t} className="text-xs sm:text-[13px] px-2.5 py-1 rounded border font-semibold" style={{ borderColor: "rgba(255,255,255,0.06)", backgroundColor: "#1c1b1b", color: C.paper }}>
+                              <span key={t} className="text-xs sm:text-[13px] px-2.5 py-1 rounded border font-semibold" style={{ borderColor: C.panelBorder, backgroundColor: C.ink, color: C.paper }}>
                                 {t}
                               </span>
                             ))}
@@ -507,11 +507,11 @@ export default function CurriculumOverview() {
                       </span>
                       <div className="space-y-2">
                         {PLACEMENTS.map((p, idx) => (
-                          <div key={idx} className="border-b pb-1.5 last:border-b-0" style={{ borderColor: "rgba(255,255,255,0.03)" }}>
+                          <div key={idx} className="border-b pb-1.5 last:border-b-0" style={{ borderColor: `${C.panelBorder}11` }}>
                             <h4 className="text-xs sm:text-[13.5px] font-bold uppercase" style={{ fontFamily: "'Space Grotesk', sans-serif", color: C.gold }}>
                               {p.domain}
                             </h4>
-                            <span className="text-[11px] sm:text-xs leading-tight block" style={{ color: "#c9c7c5" }}>
+                            <span className="text-[11px] sm:text-xs leading-tight block" style={{ color: C.slateLight }}>
                               {p.roles.join(", ")}
                             </span>
                           </div>

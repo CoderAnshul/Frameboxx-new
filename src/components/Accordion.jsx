@@ -54,15 +54,17 @@ export default function Accordion() {
     <div className="w-full">
       {MODULES.map((m, i) => {
         const isOpen = open === i;
+        const isEven = i % 2 === 0;
+        const activeAccentColor = isEven ? C.gold : "#8B7AE5";
         return (
-          <div key={m.n} style={{ borderTop: i === 0 ? `1px solid ${C.panelBorder}` : "none", borderBottom: `1px solid ${C.panelBorder}` }}>
+          <div key={m.n} style={{ borderTop: i === 0 ? `1px solid ${C.panelBorder}33` : "none", borderBottom: `1px solid ${C.panelBorder}33` }}>
             <button
               onClick={() => setOpen(isOpen ? -1 : i)}
               className="w-full flex items-center gap-5 py-5 text-left group cursor-pointer"
             >
               <span
                 className="text-[13px] shrink-0 w-7"
-                style={{ fontFamily: "'JetBrains Mono', monospace", color: isOpen ? C.gold : C.slateLight }}
+                style={{ fontFamily: "'JetBrains Mono', monospace", color: isOpen ? activeAccentColor : C.slateLight }}
               >
                 {m.n}
               </span>
@@ -79,7 +81,7 @@ export default function Accordion() {
                 size={18}
                 className="shrink-0 transition-transform duration-300"
                 style={{
-                  color: isOpen ? C.gold : C.slateLight,
+                  color: isOpen ? activeAccentColor : C.slateLight,
                   transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
                 }}
               />
@@ -93,7 +95,7 @@ export default function Accordion() {
             >
               <div className="overflow-hidden">
                 <div className="pl-12 pr-8 pb-6 max-w-2xl">
-                  <p className="text-[14.5px] leading-relaxed" style={{ color: "#c9c7c5" }}>
+                  <p className="text-[14.5px] leading-relaxed" style={{ color: C.slateLight }}>
                     {m.body}
                   </p>
                   <div className="flex flex-wrap gap-2 mt-4">
@@ -103,9 +105,9 @@ export default function Accordion() {
                         className="text-[11px] px-2.5 py-1 rounded-full"
                         style={{
                           fontFamily: "'JetBrains Mono', monospace",
-                          color: C.butter,
-                          border: `1px solid ${C.panelBorder}`,
-                          backgroundColor: "rgba(245,193,49,0.06)",
+                          color: isEven ? C.butter : "#8B7AE5",
+                          border: `1px solid ${isEven ? C.panelBorder + "44" : C.gold + "44"}`,
+                          backgroundColor: isEven ? "rgba(244,185,3,0.06)" : "rgba(92, 73, 179, 0.08)",
                         }}
                       >
                         {t}

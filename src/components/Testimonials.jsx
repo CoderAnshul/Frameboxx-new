@@ -42,8 +42,8 @@ function VideoCard({ video, index, playingId, setPlayingId }) {
     <div
       className="reel-card relative rounded-2xl overflow-hidden shrink-0"
       style={{
-        border: `1px solid rgba(245,193,49,0.16)`,
-        backgroundColor: "#242323",
+        border: `1px solid ${C.panelBorder}33`,
+        backgroundColor: C.ink,
       }}
     >
       <div className="relative w-full aspect-[9/16]">
@@ -90,7 +90,7 @@ function VideoCard({ video, index, playingId, setPlayingId }) {
               className="absolute top-3 right-3 text-[10px] tracking-wide px-2 py-0.5 rounded-full"
               style={{
                 color: C.gold,
-                border: `1px solid rgba(245,193,49,0.35)`,
+                border: `1px solid ${C.gold}55`,
                 backgroundColor: "rgba(0,0,0,0.4)",
                 fontFamily: "'JetBrains Mono', monospace",
               }}
@@ -106,7 +106,7 @@ function VideoCard({ video, index, playingId, setPlayingId }) {
                 height: 56,
                 transform: "translate(-50%, -50%)",
                 background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-                boxShadow: "0 10px 30px -8px rgba(245,193,49,0.55)",
+                boxShadow: `0 10px 30px -8px ${C.gold}88`,
               }}
             >
               <Play size={22} fill={C.ink} strokeWidth={0} style={{ marginLeft: 2 }} />
@@ -127,7 +127,7 @@ function VideoCard({ video, index, playingId, setPlayingId }) {
                 >
                   {video.title}
                 </p>
-                <p className="text-[10.5px] mt-0.5" style={{ color: "rgba(245,243,239,0.55)" }}>
+                <p className="text-[10.5px] mt-0.5" style={{ color: C.slateLight }}>
                   {video.channel}
                 </p>
               </div>
@@ -142,7 +142,7 @@ function VideoCard({ video, index, playingId, setPlayingId }) {
           target="_blank"
           rel="noopener noreferrer"
           className="reel-yt-link absolute bottom-3.5 right-3.5 flex items-center justify-center rounded-full"
-          style={{ width: 28, height: 28, backgroundColor: "rgba(0,0,0,0.45)", border: `1px solid rgba(245,193,49,0.3)` }}
+          style={{ width: 28, height: 28, backgroundColor: "rgba(0,0,0,0.45)", border: `1px solid ${C.gold}44` }}
           aria-label="Open on YouTube"
         >
           <ExternalLink size={12} style={{ color: C.gold }} />
@@ -189,14 +189,14 @@ export default function TestimonialsReel() {
         .reel-card { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s ease, box-shadow 0.4s ease; }
         .reel-card:hover {
           transform: translateY(-6px);
-          border-color: rgba(245,193,49,0.5);
-          box-shadow: 0 24px 50px -20px rgba(245,193,49,0.18);
+          border-color: ${C.gold}88;
+          box-shadow: 0 24px 50px -20px ${C.gold}28;
         }
         .reel-thumb-btn { cursor: pointer; }
         .reel-play { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }
         .reel-card:hover .reel-play { transform: translate(-50%, -50%) scale(1.1); }
         .reel-yt-link { transition: transform 0.2s ease, border-color 0.2s ease; }
-        .reel-yt-link:hover { transform: scale(1.08); border-color: rgba(245,193,49,0.7); }
+        .reel-yt-link:hover { transform: scale(1.08); border-color: ${C.gold}b3; }
 
         .reel-scroll { scrollbar-width: none; }
         .reel-scroll::-webkit-scrollbar { display: none; }
@@ -215,7 +215,7 @@ export default function TestimonialsReel() {
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(560px circle at 8% 0%, rgba(245,193,49,0.07), transparent 60%), radial-gradient(480px circle at 100% 100%, rgba(252,209,88,0.05), transparent 55%)",
+              `radial-gradient(560px circle at 8% 0%, ${C.gold}12, transparent 60%), radial-gradient(480px circle at 100% 100%, ${C.gold}0d, transparent 55%)`,
           }}
         />
 

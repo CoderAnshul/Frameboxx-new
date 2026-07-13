@@ -7,7 +7,7 @@ export default function WhyAPCC() {
       className="relative overflow-hidden border-t"
       style={{
         backgroundColor: C.inkSoft,
-        borderColor: "rgba(255,255,255,0.06)",
+        borderColor: C.panelBorder,
         fontFamily: "'Inter', sans-serif"
       }}
     >
@@ -17,14 +17,14 @@ export default function WhyAPCC() {
         .aww-card {
           position: relative;
           background-color: ${C.panel}44;
-          border: 1px solid rgba(255, 255, 255, 0.03);
+          border: 1px solid ${C.panelBorder}33;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .aww-card:hover {
           background-color: ${C.panel}99;
           border-color: ${C.gold}55;
           transform: translateY(-2px);
-          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(245, 193, 49, 0.03);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(244, 185, 3, 0.03);
         }
         .aww-card:hover .icon-container {
           background-color: ${C.gold}22 !important;
@@ -36,7 +36,7 @@ export default function WhyAPCC() {
           position: absolute;
           width: 500px;
           height: 500px;
-          background: radial-gradient(circle, rgba(245, 193, 49, 0.04) 0%, transparent 70%);
+          background: radial-gradient(circle, rgba(244, 185, 3, 0.04) 0%, transparent 70%);
           border-radius: 50%;
           top: -250px;
           left: -250px;
@@ -53,12 +53,12 @@ export default function WhyAPCC() {
 
       {/* Decorative glows */}
       <div className="aww-glow-bg" style={{ top: "10%", left: "10%" }} />
-      <div className="aww-glow-bg" style={{ bottom: "10%", right: "10%", background: `radial-gradient(circle, rgba(245, 193, 49, 0.03) 0%, transparent 70%)` }} />
+      <div className="aww-glow-bg" style={{ bottom: "10%", right: "10%", background: `radial-gradient(circle, rgba(244, 185, 3, 0.03) 0%, transparent 70%)` }} />
 
-      <div className="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-[1fr_1.3fr] border-l border-r" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+      <div className="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-[1fr_1.3fr] border-l border-r" style={{ borderColor: C.panelBorder }}>
         
         {/* Left Column: Heading & Paragraphs */}
-        <div className="p-8 sm:p-14 lg:p-20 flex flex-col justify-between border-b lg:border-b-0 lg:border-r" style={{ borderColor: "rgba(255,255,255,0.06)" }}>
+        <div className="p-8 sm:p-14 lg:p-20 flex flex-col justify-between border-b lg:border-b-0 lg:border-r" style={{ borderColor: C.panelBorder }}>
           <div className="relative">
             {/* Corner Crosshairs */}
             <span className="crosshair -top-2.5 -left-2.5">+</span>
@@ -84,7 +84,7 @@ export default function WhyAPCC() {
             <div className="mt-10 space-y-6">
               <p
                 className="text-[14px] sm:text-[15px] leading-relaxed"
-                style={{ color: "#c9c7c5" }}
+                style={{ color: C.slateLight }}
               >
                 AI is transforming the creative industry faster than ever before.
                 From social media and branding to video production and digital
@@ -94,7 +94,7 @@ export default function WhyAPCC() {
 
               <p
                 className="text-[14px] sm:text-[15px] leading-relaxed border-l-2 pl-4"
-                style={{ color: "#c9c7c5", borderColor: C.gold }}
+                style={{ color: C.slateLight, borderColor: C.gold }}
               >
                 <span className="font-semibold" style={{ color: C.paper }}>
                   APCC — AI Powered Content Creation
@@ -106,7 +106,7 @@ export default function WhyAPCC() {
             </div>
           </div>
 
-          <div className="mt-12 pt-6 border-t font-mono text-[10px] tracking-wider flex items-center justify-between" style={{ borderColor: "rgba(255,255,255,0.04)" }}>
+          <div className="mt-12 pt-6 border-t font-mono text-[10px] tracking-wider flex items-center justify-between" style={{ borderColor: `${C.panelBorder}33` }}>
             <span style={{ color: C.slateLight }}>CURRICULUM v1.0</span>
             <span style={{ color: C.gold }}>UID AFFILIATED</span>
           </div>
@@ -135,7 +135,7 @@ export default function WhyAPCC() {
               <div className="aww-card rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-5 items-start">
                 <div
                   className="icon-container flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border transition-all duration-300"
-                  style={{ borderColor: "rgba(255,255,255,0.06)", backgroundColor: "#1e1d1c" }}
+                  style={{ borderColor: C.panelBorder, backgroundColor: C.ink }}
                 >
                   <Wand2 size={24} style={{ color: C.gold }} strokeWidth={1.5} />
                 </div>
@@ -143,7 +143,7 @@ export default function WhyAPCC() {
                   <h4 className="text-[15px] font-bold tracking-[0.04em] uppercase font-mono" style={{ color: C.gold }}>
                     AI-FIRST CREATIVE LEARNING
                   </h4>
-                  <p className="mt-2 text-[13.5px] sm:text-[14px] leading-relaxed" style={{ color: "#a5a3a1" }}>
+                  <p className="mt-2 text-[13.5px] sm:text-[14px] leading-relaxed" style={{ color: C.slateLight }}>
                     Learn how modern creators use AI to accelerate creativity and production.
                   </p>
                 </div>
@@ -153,7 +153,7 @@ export default function WhyAPCC() {
               <div className="aww-card rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-5 items-start">
                 <div
                   className="icon-container flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border transition-all duration-300"
-                  style={{ borderColor: "rgba(255,255,255,0.06)", backgroundColor: "#1e1d1c" }}
+                  style={{ borderColor: C.panelBorder, backgroundColor: C.ink }}
                 >
                   <ClipboardCheck size={24} style={{ color: C.gold }} strokeWidth={1.5} />
                 </div>
@@ -161,7 +161,7 @@ export default function WhyAPCC() {
                   <h4 className="text-[15px] font-bold tracking-[0.04em] uppercase font-mono" style={{ color: C.gold }}>
                     HANDS-ON PROJECTS
                   </h4>
-                  <p className="mt-2 text-[13.5px] sm:text-[14px] leading-relaxed" style={{ color: "#a5a3a1" }}>
+                  <p className="mt-2 text-[13.5px] sm:text-[14px] leading-relaxed" style={{ color: C.slateLight }}>
                     Work on practical assignments and build an impressive portfolio.
                   </p>
                 </div>
@@ -171,7 +171,7 @@ export default function WhyAPCC() {
               <div className="aww-card rounded-2xl p-6 sm:p-8 flex flex-col sm:flex-row gap-5 items-start">
                 <div
                   className="icon-container flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border transition-all duration-300"
-                  style={{ borderColor: "rgba(255,255,255,0.06)", backgroundColor: "#1e1d1c" }}
+                  style={{ borderColor: C.panelBorder, backgroundColor: C.ink }}
                 >
                   <Lightbulb size={24} style={{ color: C.gold }} strokeWidth={1.5} />
                 </div>
@@ -179,7 +179,7 @@ export default function WhyAPCC() {
                   <h4 className="text-[15px] font-bold tracking-[0.04em] uppercase font-mono" style={{ color: C.gold }}>
                     INDUSTRY-READY SKILLS
                   </h4>
-                  <p className="mt-2 text-[13.5px] sm:text-[14px] leading-relaxed" style={{ color: "#a5a3a1" }}>
+                  <p className="mt-2 text-[13.5px] sm:text-[14px] leading-relaxed" style={{ color: C.slateLight }}>
                     Develop creative workflows aligned with the future of digital media.
                   </p>
                 </div>
