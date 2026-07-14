@@ -42,7 +42,7 @@ export default function AiHomepage({ isNested = false }) {
       />
 
       <WhyAPCC />
-      <div ref={curriculumRef}>
+      <div ref={curriculumRef} id="ai-curriculum">
         <CurriculumOverview />
       </div>
       <CareersHighlights />

@@ -8,6 +8,7 @@ import Learning from "../components/Learning";
 import Gallery from "../components/Gallery";
 import TestimonialsReel from "../components/Testimonials";
 import AiHomepage from "./AiHomepage";
+import BrandCollaboration from "../components/BrandCollaboration";
 import Footer from "../components/Footer";
 
 export default function Homepage() {
@@ -51,10 +52,10 @@ export default function Homepage() {
         onViewCurriculum={handleViewCurriculum}
         onBookDemo={handleBookDemo}
       />
-
+      <BrandCollaboration />
       <WhySection />
       <About/>
-      <div ref={curriculumRef}>
+      <div ref={curriculumRef} id="digital-marketing-curriculum">
         <Learning />
       </div>
       <Gallery/>

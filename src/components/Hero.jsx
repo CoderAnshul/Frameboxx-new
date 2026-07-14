@@ -41,7 +41,7 @@ function BidBoard() {
     <div
       ref={wrapRef}
       onMouseMove={handleMove}
-      className="absolute inset-0 overflow-hidden"
+      className="absolute inset-0 overflow-hidden hidden md:block"
       style={{ "--mx": "50%", "--my": "20%" }}
     >
       <div
@@ -140,7 +140,7 @@ function GenGrid() {
     <div
       ref={wrapRef}
       onMouseMove={handleMove}
-      className="absolute inset-0 overflow-hidden"
+      className="absolute inset-0 overflow-hidden hidden md:block"
       style={{ "--mx": "50%", "--my": "20%" }}
     >
       <div
@@ -609,7 +609,7 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
             {currentMode === "marketing" ? (
               <>
                 <div
-                  className="fade-up inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 mb-7"
+                  className="!hidden !lg:block fade-up inline-flex  items-center gap-2 rounded-full px-3.5 py-1.5 mb-7"
                   style={{ border: `1px solid ${C.panelBorder}`, backgroundColor: "rgba(244, 185, 3, 0.08)" }}
                 >
                   <Radio size={12} style={{ color: C.gold }} />
@@ -684,12 +684,13 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
                     fontFamily: "'Space Grotesk', sans-serif",
                     color: C.paper,
                     fontSize: "clamp(2.6rem, 6vw, 4.6rem)",
-                    animationDelay: "0.08s",
+                    animationDelay: "0.08s",  
+                    textAlign: "left",
                   }}
                 >
                   Content Creation,
                   <br />
-                  <span className="inline-flex items-baseline gap-3 flex-wrap">
+                  <span className="inline-flex items-baseline justify-left gap-3 flex-wrap">
                     run by the
                     <span className="relative inline-flex items-center">
                       <span
