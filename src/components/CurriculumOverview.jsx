@@ -144,26 +144,20 @@ export default function CurriculumOverview() {
         * { box-sizing: border-box; }
         
         .studio-layout {
-          display: grid;
-          grid-template-columns: 1fr;
+          display: flex;
+          flex-direction: column;
           gap: 2rem;
-        }
-        @media (min-width: 1024px) {
-          .studio-layout {
-            grid-template-columns: 0.9fr 1.1fr;
-            gap: 4rem;
-          }
         }
         
         .tab-menu-item {
-          border-bottom: 1px solid ${C.panelBorder}33;
+          border-bottom: 3px solid transparent;
           transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .tab-menu-item:hover {
-          background-color: rgba(92, 73, 179, 0.04);
+          background-color: rgba(244, 185, 3, 0.04);
         }
         .tab-menu-item.active {
-          border-left: 3px solid ${C.gold};
+          border-bottom: 3px solid ${C.gold};
           background-color: ${C.panel}66;
         }
         
@@ -239,27 +233,33 @@ export default function CurriculumOverview() {
         </div>
 
         {/* STUDIO LAYOUT SPLIT */}
-        <div className="studio-layout items-start">
+        <div className="studio-layout">
           
-          {/* LEFT COLUMN: NAVIGATION CONSOLE TABS */}
-          <div className="sticky-sidebar flex flex-col border rounded-2xl overflow-hidden" style={{ borderColor: C.panelBorder, backgroundColor: `${C.panel}22` }}>
-            <div className="px-5 py-4 border-b flex items-center justify-between" style={{ borderColor: C.panelBorder, backgroundColor: `${C.panel}44` }}>
+          {/* TOP TABS: NAVIGATION CONSOLE TABS */}
+          <div className="w-full flex flex-col border rounded-2xl overflow-hidden" style={{ borderColor: C.panelBorder, backgroundColor: `${C.panel}22` }}>
+            <div className="px-5 py-3 border-b flex flex-col sm:flex-row sm:items-center justify-between gap-2" style={{ borderColor: C.panelBorder, backgroundColor: `${C.panel}44` }}>
               <span className="font-mono text-[10px] uppercase tracking-wider" style={{ color: C.slateLight }}>
                 SELECT MODULE PANEL
               </span>
-              <span className="font-mono text-[10px]" style={{ color: C.gold }}>
-                v1.0.4
-              </span>
+              <div className="flex items-center gap-4 font-mono text-[10px]">
+                <span className="flex items-center gap-1.5">
+                  <span className="glow-dot" />
+                  <span style={{ color: C.slateLight }}>MODULE TYPE: 144 HOURS TRAINING</span>
+                </span>
+                <span style={{ color: C.gold }}>
+                  v1.0.4
+                </span>
+              </div>
             </div>
             
-            <div className="flex flex-col">
+            <div className="grid grid-cols-3 divide-x" style={{ borderColor: C.panelBorder }}>
               {TABS.map((tab) => {
                 const isActive = activeTab === tab.id;
                 return (
                   <button
                     key={tab.id}
                     onClick={() => setActiveTab(tab.id)}
-                    className={`tab-menu-item text-left p-5 flex items-start gap-4 cursor-pointer outline-none ${isActive ? "active" : ""}`}
+                    className={`tab-menu-item text-left p-4 sm:p-5 flex items-start gap-3 sm:gap-4 cursor-pointer outline-none ${isActive ? "active" : ""}`}
                   >
                     <span 
                       className="font-mono text-xs font-bold pt-0.5" 
@@ -269,12 +269,12 @@ export default function CurriculumOverview() {
                     </span>
                     <div>
                       <h3 
-                        className="text-sm sm:text-base font-bold tracking-tight"
+                        className="text-xs sm:text-base font-bold tracking-tight"
                         style={{ fontFamily: "'Space Grotesk', sans-serif", color: isActive ? C.paper : C.slateLight }}
                       >
                         {tab.label}
                       </h3>
-                      <p className="text-[11px] mt-0.5" style={{ color: C.slateLight }}>
+                      <p className="hidden md:block text-[11px] mt-0.5" style={{ color: C.slateLight }}>
                         {tab.sub}
                       </p>
                     </div>
@@ -282,15 +282,10 @@ export default function CurriculumOverview() {
                 );
               })}
             </div>
-
-            <div className="px-5 py-4 border-t flex items-center gap-3 font-mono text-[10px]" style={{ borderColor: C.panelBorder }}>
-              <span className="glow-dot" />
-              <span style={{ color: C.slateLight }}>MODULE TYPE: 144 HOURS TRAINING</span>
-            </div>
           </div>
 
-          {/* RIGHT COLUMN: INTERACTIVE CONTENT STAGE */}
-          <div className="relative min-h-[450px]">
+          {/* CONTENT STAGE BELOW TABS */}
+          <div className="relative min-h-[350px]">
             <AnimatePresence mode="wait">
               {activeTab === "overview" && (
                 <motion.div

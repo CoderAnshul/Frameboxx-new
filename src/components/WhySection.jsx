@@ -55,8 +55,8 @@ function ReasonCard({ r, i, revealed }) {
       className={`relative shrink-0 w-4/5 sm:w-3/5 lg:w-auto rounded-2xl overflow-hidden transition-all duration-700 ease-out ${LIFT[i]}`}
       style={{
         backgroundColor: C.inkSoft,
-        border: `1px solid ${C.panelBorder}33`,
-        boxShadow: "0 24px 50px -24px rgba(0,0,0,0.55)",
+        border: `1px solid ${C.panelBorder}`,
+        boxShadow: "0 12px 30px -10px rgba(0,0,0,0.06)",
         opacity: revealed ? 1 : 0,
         transform: revealed ? undefined : "translateY(28px)",
         transitionDelay: `${i * 90}ms`,
@@ -83,7 +83,7 @@ function ReasonCard({ r, i, revealed }) {
             className="w-12 h-12 rounded-full flex items-center justify-center"
             style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.butter})` }}
           >
-            <Icon size={20} style={{ color: C.ink }} strokeWidth={2} />
+            <Icon size={20} style={{ color: "#1C1D1C" }} strokeWidth={2} />
           </div>
           <span
             className="text-[12px] font-medium px-2.5 py-1 rounded-full"
@@ -265,7 +265,7 @@ export default function WhyDigitalMarketing() {
             Why digital marketing is the{" "}
             <span
               className="inline-block rounded-lg px-3 py-0.5"
-              style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`, color: C.ink }}
+              style={{ background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`, color: "#1C1D1C" }}
             >
               breakthrough
             </span>{" "}

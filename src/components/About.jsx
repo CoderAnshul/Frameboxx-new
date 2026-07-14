@@ -51,7 +51,7 @@ function ProgramImage({ revealed }) {
     >
       <div
         className="absolute -bottom-4 -right-4 w-full h-full rounded-3xl"
-        style={{ background: `linear-gradient(135deg, ${C.deepPurple}, #7A62E3)` }}
+        style={{ background: `linear-gradient(135deg, ${C.deepPurple}, ${C.butter})` }}
         aria-hidden
       />
       <div
@@ -103,9 +103,9 @@ function HighlightRow({ text, i, revealed }) {
     >
       <span
         className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center"
-        style={{ background: `linear-gradient(135deg, ${C.deepPurple}, #7A62E3)` }}
+        style={{ background: `linear-gradient(135deg, ${C.deepPurple}, ${C.butter})` }}
       >
-        <CheckCircle2 size={13} style={{ color: C.paper }} strokeWidth={2.5} />
+        <CheckCircle2 size={13} style={{ color: "#1C1D1C" }} strokeWidth={2.5} />
       </span>
       <span className="text-[14.5px]" style={{ color: C.paper, fontFamily: "'Inter', sans-serif" }}>
         {text}
@@ -123,8 +123,8 @@ function HighlightsPanel({ revealed }) {
       className="rounded-3xl p-7 sm:p-9 lg:p-10"
       style={{
         backgroundColor: C.ink,
-        border: `1px solid ${C.panelBorder}33`,
-        boxShadow: "0 30px 60px -24px rgba(0,0,0,0.6)",
+        border: `1px solid ${C.panelBorder}`,
+        boxShadow: "0 12px 30px -10px rgba(0,0,0,0.06)",
       }}
     >
       <div className="flex flex-wrap items-end justify-between gap-4 mb-2">

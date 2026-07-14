@@ -67,7 +67,7 @@ function BidBoard() {
                 style={{
                   fontFamily: "'JetBrains Mono', monospace",
                   fontSize: "9px",
-                  color: "#8B7AE5",
+                  color: C.gold,
                   animationDelay: `${c.delay}s`,
                   animationDuration: `${c.dur}s`,
                 }}
@@ -82,7 +82,7 @@ function BidBoard() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(360px circle at var(--mx) var(--my), rgba(92, 73, 179, 0.22), transparent 65%)",
+            "radial-gradient(360px circle at var(--mx) var(--my), rgba(244, 185, 3, 0.15), transparent 65%)",
           transition: "background 60ms linear",
         }}
       />
@@ -90,7 +90,7 @@ function BidBoard() {
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          background: `linear-gradient(180deg, ${C.inkSoft} 0%, transparent 16%, transparent 78%, ${C.inkSoft} 100%), linear-gradient(90deg, ${C.inkSoft} 0%, transparent 12%, transparent 60%, rgba(28,27,27,0.4) 100%)`,
+          background: `linear-gradient(180deg, ${C.inkSoft} 0%, transparent 16%, transparent 78%, ${C.inkSoft} 100%), linear-gradient(90deg, ${C.inkSoft} 0%, transparent 12%, transparent 78%, ${C.inkSoft} 100%)`,
         }}
       />
     </div>
@@ -209,7 +209,7 @@ function GenGrid() {
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          background: `linear-gradient(180deg, ${C.inkSoft} 0%, transparent 16%, transparent 78%, ${C.inkSoft} 100%), linear-gradient(90deg, ${C.inkSoft} 0%, transparent 12%, transparent 60%, rgba(28,27,27,0.4) 100%)`,
+          background: `linear-gradient(180deg, ${C.inkSoft} 0%, transparent 16%, transparent 78%, ${C.inkSoft} 100%), linear-gradient(90deg, ${C.inkSoft} 0%, transparent 12%, transparent 78%, ${C.inkSoft} 100%)`,
         }}
       />
     </div>
@@ -356,7 +356,7 @@ function ConsoleForm() {
       style={{
         backgroundColor: C.panel,
         border: `1px solid ${C.panelBorder}`,
-        boxShadow: "0 30px 60px -20px rgba(0,0,0,0.6)",
+        boxShadow: "0 12px 30px -10px rgba(0,0,0,0.06)",
       }}
     >
       <div className="flex items-start justify-between gap-3 mb-1">
@@ -446,7 +446,7 @@ function ConsoleForm() {
           className="w-full rounded-lg py-3 text-sm font-semibold flex items-center justify-center gap-2 mt-2 transition-transform active:scale-[0.98]"
           style={{
             background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-            color: C.ink,
+            color: "#1C1D1C",
             fontFamily: "'Space Grotesk', sans-serif",
           }}
         >
@@ -472,7 +472,7 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
         ${FONTS}
         * { box-sizing: border-box; }
         .bidcell {
-          background-color: rgba(92, 73, 179, 0.05);
+          background-color: rgba(244, 185, 3, 0.05);
           border-radius: 3px;
           animation-name: bidflash;
           animation-iteration-count: infinite;
@@ -484,9 +484,9 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
           opacity: 0;
         }
         @keyframes bidflash {
-          0%, 82% { background-color: rgba(92, 73, 179, 0.05); }
-          90% { background-color: rgba(92, 73, 179, 0.38); }
-          100% { background-color: rgba(92, 73, 179, 0.05); }
+          0%, 82% { background-color: rgba(244, 185, 3, 0.05); }
+          90% { background-color: rgba(244, 185, 3, 0.38); }
+          100% { background-color: rgba(244, 185, 3, 0.05); }
         }
         @keyframes bidnumflash {
           0%, 80% { opacity: 0; transform: translateY(2px); }
@@ -610,12 +610,12 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
               <>
                 <div
                   className="fade-up inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 mb-7"
-                  style={{ border: `1px solid ${C.panelBorder}33`, backgroundColor: "rgba(92, 73, 179, 0.08)" }}
+                  style={{ border: `1px solid ${C.panelBorder}`, backgroundColor: "rgba(244, 185, 3, 0.08)" }}
                 >
-                  <Radio size={12} style={{ color: "#8B7AE5" }} />
+                  <Radio size={12} style={{ color: C.gold }} />
                   <span
                     className="text-[11px] tracking-[0.12em]"
-                    style={{ fontFamily: "'JetBrains Mono', monospace", color: "#8B7AE5" }}
+                    style={{ fontFamily: "'JetBrains Mono', monospace", color: C.gold }}
                   >
                     LIVE COHORT ENROLLING · ADVANCED CERTIFICATION
                   </span>
@@ -638,7 +638,7 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
                       <span
                         className="bidtag-in inline-flex items-center gap-2 rounded-lg px-4 py-1"
                         style={{
-                          background: `linear-gradient(135deg, ${C.deepPurple}, #7A62E3)`,
+                          background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
                           color: C.paper,
                         }}
                       >
@@ -696,7 +696,7 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
                         className="bidtag-in inline-flex items-center gap-2 rounded-lg px-4 py-1"
                         style={{
                           background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-                          color: C.ink,
+                          color: "#1C1D1C",
                         }}
                       >
                         machine
@@ -729,10 +729,8 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
                 onClick={onViewCurriculum}
                 className="rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:scale-[1.03] cursor-pointer"
                 style={{
-                  background: currentMode === "marketing"
-                    ? `linear-gradient(135deg, ${C.deepPurple}, #7A62E3)`
-                    : `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-                  color: currentMode === "marketing" ? C.paper : C.ink,
+                  background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
+                  color: "#1C1D1C",
                   fontFamily: "'Space Grotesk', sans-serif",
                 }}
               >

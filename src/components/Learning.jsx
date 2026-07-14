@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef, useMemo } from "react";
-import { Trophy, CheckCircle2, Sparkles } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Trophy, CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
 
 import { C, FONTS } from "../theme";
 
@@ -33,7 +33,6 @@ const PHASES = [
   },
 ];
 
-// Read top to bottom, start to finish.
 const STEPS = [
   { title: "Start of the Course", tag: "ORIENTATION" },
   { title: "Introduction to Digital Marketing", tag: "FOUNDATIONS" },
@@ -52,233 +51,240 @@ const STEPS = [
 ];
 
 /* ---------------------------------------------------------
-   LOT CARD — an auction listing, not a generic pricing card
+   LEDGER ROW — a curriculum lot rendered as a ledger entry,
+   with a large index numeral and an expandable item list
 --------------------------------------------------------- */
-function LotCard({ phase, index }) {
-  const [seats, setSeats] = useState(41 + index * 17);
-
-  useEffect(() => {
-    const t = setInterval(() => {
-      setSeats((s) => s + (Math.random() < 0.4 ? 1 : 0));
-    }, 4200 + index * 900);
-    return () => clearInterval(t);
-  }, [index]);
-  const isEven = index % 2 === 0;
+function LedgerRow({ phase, index, openIndex, setOpenIndex }) {
+  const isOpen = openIndex === index;
+  const n = String(index + 1).padStart(2, "0");
 
   return (
     <div
-      className={`lot-card lot-card--${isEven ? "even" : "odd"} relative rounded-2xl p-6 sm:p-8 flex flex-col`}
-      style={{
-        backgroundColor: `${C.panel}33`,
-        border: `1px solid ${isEven ? C.gold + "33" : C.panelBorder + "33"}`,
-      }}
+      className="ledger-row relative"
+      style={{ borderBottom: `1px solid ${C.panelBorder}` }}
     >
-      <div className="flex items-start justify-between gap-4 mb-5">
-        <div className="flex items-center gap-2.5">
-          <span
-            className="rounded-md px-2.5 py-1 text-[11px] font-semibold tracking-[0.14em]"
-            style={{
-              background: isEven
-                ? `linear-gradient(135deg, ${C.gold}, ${C.butter})`
-                : `linear-gradient(135deg, ${C.deepPurple}, #7A62E3)`,
-              color: isEven ? C.ink : C.paper,
-              fontFamily: "'JetBrains Mono', monospace",
-            }}
-          >
-            {phase.lot}
-          </span>
-          <span
-            className="text-[11px] tracking-[0.14em]"
-            style={{ color: C.slate, fontFamily: "'JetBrains Mono', monospace" }}
-          >
-            {phase.hours}
-          </span>
-        </div>
-        <span
-          className="text-[10.5px] tracking-wide shrink-0"
-          style={{ color: isEven ? C.gold : "#8B7AE5", fontFamily: "'JetBrains Mono', monospace" }}
-        >
-          {seats} bidding
-        </span>
-      </div>
-
-      <h3
-        className="text-2xl sm:text-[26px] font-semibold leading-tight mb-6"
-        style={{ fontFamily: "'Space Grotesk', sans-serif", color: C.paper }}
+      <button
+        onClick={() => setOpenIndex(isOpen ? -1 : index)}
+        className="w-full flex items-center gap-5 sm:gap-8 py-7 sm:py-9 text-left group"
       >
-        {phase.title}
-      </h3>
+        <span
+          className="ledger-num shrink-0 leading-none"
+          style={{
+            fontFamily: "'Space Grotesk', sans-serif",
+            color: isOpen ? C.gold : `${C.slate}55`,
+            fontSize: "clamp(2.4rem, 6vw, 4rem)",
+            transition: "color 0.35s ease",
+          }}
+        >
+          {n}
+        </span>
 
-      <ul className="space-y-3.5 flex-1">
-        {phase.items.map((item, i) => (
-          <li key={i} className="flex items-start gap-3">
-            <CheckCircle2
-              size={17}
-              strokeWidth={2.2}
-              className="mt-0.5 shrink-0"
-              style={{ color: isEven ? C.gold : "#8B7AE5" }}
-            />
-            <span className="text-[14.5px] leading-relaxed" style={{ color: C.slateLight }}>
-              {item}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center gap-2.5 mb-1.5">
+            <span
+              className="text-[10.5px] tracking-[0.16em] rounded-full px-2.5 py-0.5"
+              style={{
+                color: C.gold,
+                border: `1px solid ${C.gold}44`,
+                fontFamily: "'JetBrains Mono', monospace",
+              }}
+            >
+              {phase.lot}
             </span>
-          </li>
-        ))}
-      </ul>
+            <span
+              className="text-[10.5px] tracking-[0.16em]"
+              style={{ color: C.slate, fontFamily: "'JetBrains Mono', monospace" }}
+            >
+              {phase.hours}
+            </span>
+          </div>
+          <h3
+            className="text-xl sm:text-2xl font-semibold leading-tight truncate"
+            style={{ fontFamily: "'Space Grotesk', sans-serif", color: C.paper }}
+          >
+            {phase.title}
+          </h3>
+        </div>
+
+        <ArrowRight
+          size={20}
+          className="shrink-0 ledger-arrow"
+          style={{
+            color: C.gold,
+            transform: isOpen ? "rotate(90deg)" : "rotate(0deg)",
+            transition: "transform 0.35s cubic-bezier(0.16,1,0.3,1)",
+          }}
+        />
+      </button>
 
       <div
-        className="lot-bar mt-7 h-[3px] w-full rounded-full overflow-hidden"
-        style={{ backgroundColor: `${C.panelBorder}33` }}
+        className="ledger-panel overflow-hidden"
+        style={{
+          maxHeight: isOpen ? 400 : 0,
+          transition: "max-height 0.5s cubic-bezier(0.16,1,0.3,1)",
+        }}
       >
-        <div
-          className="lot-bar-fill h-full rounded-full"
+        <div className="pl-[calc(2.4rem+1.25rem)] sm:pl-[calc(4rem+2rem)] pb-8 sm:pb-9">
+          <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+            {phase.items.map((item, i) => (
+              <li key={i} className="flex items-start gap-2.5">
+                <CheckCircle2
+                  size={16}
+                  strokeWidth={2.2}
+                  className="mt-0.5 shrink-0"
+                  style={{ color: C.gold }}
+                />
+                <span className="text-[14px] leading-relaxed" style={{ color: C.slateLight }}>
+                  {item}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* ---------------------------------------------------------
+   ROADMAP CARD — one step in a horizontal scrolling strip
+--------------------------------------------------------- */
+function RoadmapCard({ step, index, activeIndex }) {
+  const n = String(index + 1).padStart(2, "0");
+  const isActive = index <= activeIndex;
+
+  return (
+    <div className="roadmap-card shrink-0 flex flex-col" style={{ width: 220 }}>
+      <div className="flex items-center gap-2 mb-4">
+        <span
+          className="roadmap-dot shrink-0 rounded-full"
           style={{
-            background: isEven
-              ? `linear-gradient(90deg, ${C.gold}, ${C.butter})`
-              : `linear-gradient(90deg, ${C.deepPurple}, #7A62E3)`,
-            width: isEven ? "35%" : "65%"
+            width: 10,
+            height: 10,
+            backgroundColor: isActive ? C.gold : C.panelBorder,
+            boxShadow: isActive ? `0 0 10px ${C.gold}99` : "none",
+            transition: "background-color 0.4s ease, box-shadow 0.4s ease",
+          }}
+        />
+        <div
+          className="roadmap-line h-[2px] flex-1 rounded-full"
+          style={{
+            backgroundColor: isActive ? C.gold : C.panelBorder,
+            transition: "background-color 0.4s ease",
           }}
         />
       </div>
-    </div>
-  );
-}
-
-/* ---------------------------------------------------------
-   TIMELINE ROW — one step of the ceremony, alternating
-   left/right of a center spine. Pure CSS grid handles the
-   alternation and the mobile collapse, no JS positioning.
- --------------------------------------------------------- */
-function TimelineRow({ step, index, inView }) {
-  const n = String(index + 1).padStart(2, "0");
-  const side = index % 2 === 0 ? "left" : "right";
-  const isEven = index % 2 === 0;
-
-  return (
-    <div
-      className={`tl-row tl-row--${side}`}
-      style={{ transitionDelay: inView ? `${0.08 + index * 0.06}s` : "0s" }}
-    >
-      <div className="tl-dot-col">
-        <div className="tl-dot" style={{ borderColor: `${isEven ? C.gold : C.deepPurple}55` }}>
-          <span style={{ color: isEven ? C.gold : "#8B7AE5", fontFamily: "'JetBrains Mono', monospace" }}>{n}</span>
-        </div>
-      </div>
-      <div className="tl-card" style={{ borderColor: `${isEven ? C.gold + "15" : C.panelBorder + "33"}` }}>
-        <span
-          className="text-[10px] tracking-[0.16em]"
-          style={{ color: isEven ? C.gold : "#8B7AE5", fontFamily: "'JetBrains Mono', monospace" }}
-        >
-          {step.tag}
-        </span>
-        <h4
-          className="text-[15.5px] sm:text-[16.5px] font-semibold leading-snug mt-1"
-          style={{ fontFamily: "'Space Grotesk', sans-serif", color: C.paper }}
-        >
-          {step.title}
-        </h4>
-      </div>
-    </div>
-  );
-}
-
-/* ---------------------------------------------------------
-   PODIUM — signature finale, sitting at the base of the spine
---------------------------------------------------------- */
-function Podium({ inView }) {
-  const confetti = useMemo(
-    () =>
-      Array.from({ length: 24 }, () => ({
-        left: Math.random() * 100,
-        delay: (Math.random() * 3).toFixed(2),
-        dur: (2.2 + Math.random() * 1.8).toFixed(2),
-        size: 3 + Math.random() * 4,
-        gold: Math.random() < 0.5,
-      })),
-    []
-  );
-
-  return (
-    <div className={`podium-wrap ${inView ? "in-view" : ""} flex flex-col items-center text-center`}>
-      <div className="podium relative flex items-center justify-center shrink-0" style={{ width: 140, height: 140 }}>
-        <div className="podium-beam absolute inset-0 rounded-full" />
-        <div className="podium-ring absolute inset-0 rounded-full" />
-        {confetti.map((c, i) => (
-          <span
-            key={i}
-            className="podium-confetti absolute rounded-sm"
-            style={{
-              left: `${c.left}%`,
-              width: c.size,
-              height: c.size,
-              backgroundColor: c.gold ? C.gold : C.butter,
-              animationDelay: `${c.delay}s`,
-              animationDuration: `${c.dur}s`,
-            }}
-          />
-        ))}
-        <div
-          className="relative flex items-center justify-center rounded-full"
-          style={{
-            width: 84,
-            height: 84,
-            background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-            boxShadow: `0 0 44px ${C.gold}80`,
-          }}
-        >
-          <Trophy size={34} strokeWidth={2} style={{ color: C.ink }} />
-        </div>
-      </div>
       <span
-        className="text-[11px] tracking-[0.2em] mt-2"
+        className="text-[10px] tracking-[0.16em] mb-2"
         style={{ color: C.gold, fontFamily: "'JetBrains Mono', monospace" }}
       >
-        ROUND 14 · CERTIFIED
+        {n} · {step.tag}
       </span>
-      <p className="text-[13.5px] max-w-[220px] mt-1.5" style={{ color: C.slate }}>
-        Every round cleared. You're on the podium.
-      </p>
+      <h4
+        className="text-[15px] font-semibold leading-snug"
+        style={{ fontFamily: "'Space Grotesk', sans-serif", color: C.paper }}
+      >
+        {step.title}
+      </h4>
     </div>
   );
 }
 
 /* ---------------------------------------------------------
-   LEARNING PATH — a ceremony you climb, not a chart you read
+   ROADMAP — horizontal scroll, progress driven by scroll pos
 --------------------------------------------------------- */
-function LearningPath() {
-  const ref = useRef(null);
-  const [inView, setInView] = useState(false);
+function Roadmap() {
+  const scrollerRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(-1);
+  const [scrollPct, setScrollPct] = useState(0);
 
   useEffect(() => {
-    const el = ref.current;
+    const el = scrollerRef.current;
     if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setInView(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
+
+    const onScroll = () => {
+      const max = el.scrollWidth - el.clientWidth;
+      const pct = max > 0 ? el.scrollLeft / max : 0;
+      setScrollPct(pct);
+      setActiveIndex(Math.floor(pct * STEPS.length));
+    };
+
+    el.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
+  const isComplete = scrollPct > 0.92;
+
   return (
-    <div ref={ref} className={`tl-wrap relative ${inView ? "in-view" : ""}`}>
-      <div className="tl-spine-track absolute">
-        <div className="tl-spine-fill absolute inset-0" />
+    <div>
+      {/* progress rail */}
+      <div
+        className="relative h-1 rounded-full overflow-hidden mb-8"
+        style={{ backgroundColor: C.panelBorder }}
+      >
+        <div
+          className="absolute inset-y-0 left-0 rounded-full"
+          style={{
+            width: `${scrollPct * 100}%`,
+            background: `linear-gradient(90deg, ${C.gold}, ${C.butter})`,
+            transition: "width 0.1s linear",
+          }}
+        />
       </div>
 
-      <div className="relative">
+      <div
+        ref={scrollerRef}
+        className="roadmap-scroller flex gap-8 overflow-x-auto pb-6"
+        style={{ scrollSnapType: "x proximity" }}
+      >
         {STEPS.map((step, i) => (
-          <TimelineRow key={i} step={step} index={i} inView={inView} />
+          <div key={i} style={{ scrollSnapAlign: "start" }}>
+            <RoadmapCard step={step} index={i} activeIndex={activeIndex} />
+          </div>
         ))}
+
+        {/* certificate card, end of the strip */}
+        <div
+          className="shrink-0 flex flex-col items-center justify-center text-center rounded-2xl px-8"
+          style={{
+            width: 220,
+            border: `1px solid ${isComplete ? C.gold : C.panelBorder}`,
+            backgroundColor: C.panel,
+            transition: "border-color 0.4s ease",
+            scrollSnapAlign: "start",
+          }}
+        >
+          <div
+            className="flex items-center justify-center rounded-full mb-3"
+            style={{
+              width: 54,
+              height: 54,
+              background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
+              boxShadow: isComplete ? `0 0 30px ${C.gold}80` : "none",
+              transition: "box-shadow 0.4s ease",
+            }}
+          >
+            <Trophy size={24} strokeWidth={2} style={{ color: "#1C1D1C" }} />
+          </div>
+          <span
+            className="text-[10px] tracking-[0.16em] mb-1"
+            style={{ color: C.gold, fontFamily: "'JetBrains Mono', monospace" }}
+          >
+            CERTIFIED
+          </span>
+          <p className="text-[13px] leading-snug" style={{ color: C.slate }}>
+            All fourteen rounds cleared.
+          </p>
+        </div>
       </div>
 
-      <div className="tl-podium-slot relative flex justify-center mt-2">
-        <Podium inView={inView} />
-      </div>
+      <p
+        className="text-[11.5px] tracking-wide mt-2"
+        style={{ color: C.slate, fontFamily: "'JetBrains Mono', monospace" }}
+      >
+        SCROLL TO WALK THE PATH →
+      </p>
     </div>
   );
 }
@@ -287,20 +293,13 @@ function LearningPath() {
    SECTION
 --------------------------------------------------------- */
 export default function Curriculum() {
+  const [openIndex, setOpenIndex] = useState(0);
+
   return (
     <>
       <style>{`
         ${FONTS}
         .curriculum-section * { box-sizing: border-box; }
-
-        .lot-card { transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), border-color 0.35s ease, background-color 0.35s ease; }
-        .lot-card:hover {
-          transform: translateY(-6px);
-          border-color: ${C.gold}55;
-          background-color: rgba(92, 73, 179, 0.05);
-        }
-        .lot-bar-fill { width: 22%; transition: width 0.6s cubic-bezier(0.16,1,0.3,1); }
-        .lot-card:hover .lot-bar-fill { width: 100%; }
 
         .fade-up { animation: curFadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both; }
         @keyframes curFadeUp {
@@ -308,111 +307,17 @@ export default function Curriculum() {
           to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ---------- Timeline ---------- */
-        .tl-wrap { padding: 8px 0 0; }
+        .ledger-row:hover .ledger-num { color: ${C.gold}99; }
 
-        .tl-spine-track {
-          top: 22px;
-          bottom: 92px;
-          left: 50%;
-          width: 2px;
-          background: ${C.panelBorder}33;
-          transform: translateX(-1px);
-        }
-        .tl-spine-fill {
-          background: linear-gradient(180deg, ${C.gold}, ${C.butter});
-          transform: scaleY(0);
-          transform-origin: top;
-          transition: transform 1.4s cubic-bezier(0.16,1,0.3,1) 0.1s;
-          box-shadow: 0 0 12px rgba(244, 185, 3, 0.5);
-        }
-        .in-view .tl-spine-fill { transform: scaleY(1); }
-
-        .tl-row {
-          display: grid;
-          grid-template-columns: 1fr 56px 1fr;
-          align-items: center;
-          column-gap: 22px;
-          min-height: 78px;
-          opacity: 0;
-          transform: translateY(14px);
-          transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1);
-        }
-        .in-view .tl-row { opacity: 1; transform: translateY(0); }
-
-        .tl-dot-col { grid-column: 2; display: flex; justify-content: center; }
-        .tl-dot {
-          width: 46px;
-          height: 46px;
-          border-radius: 999px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 12px;
-          font-weight: 600;
-          border: 1.5px solid ${C.panelBorder}55;
-          background: ${C.ink};
-          box-shadow: 0 0 0 6px ${C.ink};
-          position: relative;
-          z-index: 2;
-        }
-
-        .tl-row--left .tl-card { grid-column: 1; text-align: right; }
-        .tl-row--right .tl-card { grid-column: 3; text-align: left; }
-
-        .tl-card {
-          border-radius: 12px;
-          padding: 12px 16px;
-          background: ${C.panel}33;
-          border: 1px solid ${C.panelBorder}33;
-        }
-
-        .tl-podium-slot { min-height: 40px; }
-
-        .podium-wrap { opacity: 0.25; transform: translateY(10px) scale(0.94); transition: opacity 0.6s ease 0.5s, transform 0.6s cubic-bezier(0.16,1,0.3,1) 0.5s; }
-        .podium-wrap.in-view { opacity: 1; transform: translateY(0) scale(1); }
-
-        .podium-beam {
-          background: conic-gradient(from 0deg, transparent 0%, rgba(244, 185, 3, 0.18) 8%, transparent 16%, transparent 50%, rgba(244, 185, 3, 0.12) 58%, transparent 66%, transparent 100%);
-          animation: spin 7s linear infinite;
-        }
-        .podium-ring {
-          border: 1px solid ${C.panelBorder}44;
-          animation: ringPulse 2.4s cubic-bezier(0,0,0.2,1) infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        @keyframes ringPulse {
-          0% { transform: scale(0.72); opacity: 0.6; }
-          100% { transform: scale(1.5); opacity: 0; }
-        }
-        .podium-confetti {
-          top: -6px;
-          animation-name: confettiFall;
-          animation-timing-function: ease-in;
-          animation-iteration-count: infinite;
-        }
-        @keyframes confettiFall {
-          0% { transform: translateY(0) rotate(0deg); opacity: 0; }
-          10% { opacity: 1; }
-          100% { transform: translateY(130px) rotate(240deg); opacity: 0; }
-        }
-
-        @media (max-width: 640px) {
-          .tl-spine-track { left: 23px; transform: none; bottom: 128px; }
-          .tl-row { grid-template-columns: 46px 1fr; column-gap: 14px; min-height: 64px; }
-          .tl-dot-col { grid-column: 1; justify-content: flex-start; }
-          .tl-row--left .tl-card, .tl-row--right .tl-card {
-            grid-column: 2;
-            text-align: left;
-          }
-        }
+        .roadmap-scroller { scrollbar-width: thin; scrollbar-color: ${C.gold}66 transparent; }
+        .roadmap-scroller::-webkit-scrollbar { height: 6px; }
+        .roadmap-scroller::-webkit-scrollbar-thumb { background-color: ${C.gold}66; border-radius: 999px; }
+        .roadmap-scroller::-webkit-scrollbar-track { background: transparent; }
 
         @media (prefers-reduced-motion: reduce) {
-          .lot-card, .lot-bar-fill, .tl-row, .tl-spine-fill, .podium-wrap, .podium-beam, .podium-ring, .podium-confetti, .fade-up {
+          .fade-up, .ledger-panel, .ledger-num, .ledger-arrow, .roadmap-dot, .roadmap-line {
             animation: none !important;
             transition: none !important;
-            opacity: 1 !important;
-            transform: none !important;
           }
         }
       `}</style>
@@ -421,7 +326,6 @@ export default function Curriculum() {
         className="curriculum-section relative overflow-hidden py-20 sm:py-28"
         style={{ backgroundColor: C.inkSoft }}
       >
-        {/* ambient gold wash */}
         <div
           className="pointer-events-none absolute inset-0"
           style={{
@@ -430,8 +334,8 @@ export default function Curriculum() {
           }}
         />
 
-        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-10">
-          {/* ---- Curriculum header + lots ---- */}
+        <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-10">
+          {/* ---- Header ---- */}
           <div className="fade-up flex items-center gap-2.5 mb-4">
             <Sparkles size={14} style={{ color: C.gold }} />
             <span
@@ -442,7 +346,7 @@ export default function Curriculum() {
             </span>
           </div>
           <h2
-            className="fade-up font-bold leading-[1.02] tracking-tight mb-14 max-w-2xl"
+            className="fade-up font-bold leading-[1.02] tracking-tight mb-16"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
               color: C.paper,
@@ -450,18 +354,25 @@ export default function Curriculum() {
               animationDelay: "0.06s",
             }}
           >
-            The program, itemized <span style={{ color: C.gold }}>&amp;</span> up for bid.
+            The curriculum ledger.
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 mb-24 sm:mb-28">
+          {/* ---- Ledger of lots ---- */}
+          <div className="mb-24 sm:mb-28" style={{ borderTop: `1px solid ${C.panelBorder}` }}>
             {PHASES.map((phase, i) => (
-              <LotCard key={i} phase={phase} index={i} />
+              <LedgerRow
+                key={i}
+                phase={phase}
+                index={i}
+                openIndex={openIndex}
+                setOpenIndex={setOpenIndex}
+              />
             ))}
           </div>
 
           {/* ---- Learning path ---- */}
-          <div className="max-w-xl mx-auto text-center mb-14">
-            <div className="flex items-center justify-center gap-2.5 mb-3">
+          <div className="mb-10">
+            <div className="flex items-center gap-2.5 mb-3">
               <Sparkles size={14} style={{ color: C.gold }} />
               <span
                 className="text-[11px] tracking-[0.18em]"
@@ -485,7 +396,7 @@ export default function Curriculum() {
             </p>
           </div>
 
-          <LearningPath />
+          <Roadmap />
         </div>
       </section>
     </>

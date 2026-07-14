@@ -42,7 +42,7 @@ function VideoCard({ video, index, playingId, setPlayingId }) {
     <div
       className="reel-card relative rounded-2xl overflow-hidden shrink-0"
       style={{
-        border: `1px solid ${C.panelBorder}33`,
+        border: `1px solid ${C.panelBorder}`,
         backgroundColor: C.ink,
       }}
     >
@@ -78,7 +78,7 @@ function VideoCard({ video, index, playingId, setPlayingId }) {
               className="absolute top-3 left-3 rounded-full px-2.5 py-1 text-[9.5px] font-semibold tracking-[0.1em]"
               style={{
                 background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-                color: C.ink,
+                color: "#1C1D1C",
                 fontFamily: "'JetBrains Mono', monospace",
               }}
             >
@@ -109,7 +109,7 @@ function VideoCard({ video, index, playingId, setPlayingId }) {
                 boxShadow: `0 10px 30px -8px ${C.gold}88`,
               }}
             >
-              <Play size={22} fill={C.ink} strokeWidth={0} style={{ marginLeft: 2 }} />
+              <Play size={22} fill="#1C1D1C" strokeWidth={0} style={{ marginLeft: 2 }} />
             </span>
 
             {/* channel + title */}
@@ -189,8 +189,8 @@ export default function TestimonialsReel() {
         .reel-card { transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), border-color 0.4s ease, box-shadow 0.4s ease; }
         .reel-card:hover {
           transform: translateY(-6px);
-          border-color: ${C.gold}88;
-          box-shadow: 0 24px 50px -20px ${C.gold}28;
+          border-color: ${C.gold};
+          box-shadow: 0 12px 30px rgba(0,0,0,0.06);
         }
         .reel-thumb-btn { cursor: pointer; }
         .reel-play { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); }

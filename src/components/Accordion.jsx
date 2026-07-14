@@ -55,7 +55,7 @@ export default function Accordion() {
       {MODULES.map((m, i) => {
         const isOpen = open === i;
         const isEven = i % 2 === 0;
-        const activeAccentColor = isEven ? C.gold : "#8B7AE5";
+        const activeAccentColor = C.gold;
         return (
           <div key={m.n} style={{ borderTop: i === 0 ? `1px solid ${C.panelBorder}33` : "none", borderBottom: `1px solid ${C.panelBorder}33` }}>
             <button
@@ -105,9 +105,9 @@ export default function Accordion() {
                         className="text-[11px] px-2.5 py-1 rounded-full"
                         style={{
                           fontFamily: "'JetBrains Mono', monospace",
-                          color: isEven ? C.butter : "#8B7AE5",
-                          border: `1px solid ${isEven ? C.panelBorder + "44" : C.gold + "44"}`,
-                          backgroundColor: isEven ? "rgba(244,185,3,0.06)" : "rgba(92, 73, 179, 0.08)",
+                          color: C.butter,
+                          border: `1px solid ${C.panelBorder}`,
+                          backgroundColor: "rgba(244,185,3,0.06)",
                         }}
                       >
                         {t}

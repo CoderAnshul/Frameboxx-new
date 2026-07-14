@@ -105,7 +105,7 @@ export default function Footer() {
           <div>
             <h4 
               className="text-xs font-bold uppercase tracking-wider mb-5" 
-              style={{ fontFamily: "'Space Grotesk', sans-serif", color: "#8B7AE5" }}
+              style={{ fontFamily: "'Space Grotesk', sans-serif", color: C.gold }}
             >
               Curriculum Core
             </h4>
@@ -145,7 +145,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="contact-pill p-3 rounded-xl flex items-center gap-3"
             >
-              <MessageSquare size={14} style={{ color: "#8B7AE5" }} />
+              <MessageSquare size={14} style={{ color: C.gold }} />
               <div className="flex flex-col text-xs">
                 <span style={{ color: C.slateLight }}>WHATSAPP SUPPORT</span>
                 <span className="font-semibold" style={{ color: C.paper }}>Chat with us</span>

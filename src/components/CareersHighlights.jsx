@@ -54,39 +54,19 @@ export default function CareersHighlights() {
         ${FONTS}
         * { box-sizing: border-box; }
 
-        .career-row {
-          position: relative;
-          border-color: ${C.panelBorder}22;
+        .career-card {
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
-        .career-row--even:hover { background-color: rgba(244, 185, 3, 0.04); }
-        .career-row--even:hover .career-icon-box {
-          border-color: ${C.gold}55;
-          background-color: ${C.gold};
+        .career-card:hover {
+          border-color: ${C.gold} !important;
+          box-shadow: 0 12px 30px rgba(244, 185, 3, 0.08) !important;
         }
-        .career-row--even:hover .career-icon {
-          color: ${C.ink} !important;
+        .career-card:hover .career-icon-box {
+          background-color: ${C.gold} !important;
+          border-color: ${C.gold} !important;
         }
-        .career-row--even:hover .career-chevron {
-          transform: translateX(4px);
-          color: ${C.gold} !important;
-        }
-
-        .career-row--odd:hover { background-color: rgba(92, 73, 179, 0.05); }
-        .career-row--odd:hover .career-icon-box {
-          border-color: ${C.deepPurple}77;
-          background-color: ${C.deepPurple};
-        }
-        .career-row--odd:hover .career-icon {
-          color: ${C.paper} !important;
-        }
-        .career-row--odd:hover .career-chevron {
-          transform: translateX(4px);
-          color: ${C.deepPurple} !important;
-        }
-
-        .career-row:focus-visible {
-          outline: 1px solid ${C.gold};
-          outline-offset: -1px;
+        .career-card:hover .career-icon {
+          color: #1C1D1C !important;
         }
 
         .console-grid {
@@ -116,7 +96,7 @@ export default function CareersHighlights() {
       <div
         className="pointer-events-none absolute w-[600px] h-[600px] rounded-full"
         style={{
-          background: `radial-gradient(circle, ${C.deepPurple}0c 0%, transparent 70%)`,
+          background: `radial-gradient(circle, ${C.gold}0c 0%, transparent 70%)`,
           top: "-10%",
           right: "-5%"
         }}
@@ -150,39 +130,55 @@ export default function CareersHighlights() {
             </span>
           </motion.div>
 
-          <div className="border-t" style={{ borderColor: `${C.panelBorder}22` }}>
-            {CAREERS.map((car, idx) => {
-              const Icon = car.icon;
-              return (
-                <motion.div
-                  key={idx}
-                  variants={fadeInUp}
-                  tabIndex={0}
-                  className={`career-row ${idx % 2 === 0 ? "career-row--even" : "career-row--odd"} grid grid-cols-[2.5rem_2.5rem_1fr_1.25rem] sm:grid-cols-[3.5rem_3rem_1fr_1.5rem] items-center gap-4 sm:gap-6 px-2 sm:px-3 py-5 border-b cursor-pointer transition-colors duration-300 outline-none`}
-                >
-                  <span className="font-mono text-xs sm:text-sm" style={{ color: C.slateLight }}>
-                    {String(idx + 1).padStart(2, "0")}
-                  </span>
-                  <div
-                    className="career-icon-box flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full border transition-all duration-300"
-                    style={{ borderColor: `${C.panelBorder}33`, backgroundColor: "transparent" }}
+          <div>
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {CAREERS.map((car, idx) => {
+                const Icon = car.icon;
+                return (
+                  <motion.div
+                    key={idx}
+                    variants={fadeInUp}
+                    className="career-card group relative rounded-2xl p-4 sm:p-6 border flex flex-col justify-between overflow-hidden cursor-pointer"
+                    style={{ 
+                      borderColor: C.panelBorder, 
+                      backgroundColor: C.panel,
+                      boxShadow: "0 4px 20px rgba(0,0,0,0.01)"
+                    }}
                   >
-                    <Icon size={16} strokeWidth={1.5} className="career-icon transition-colors duration-300" style={{ color: idx % 2 === 0 ? C.gold : "#8B7AE5" }} />
-                  </div>
-                  <span
-                    className="text-[14.5px] sm:text-base font-semibold tracking-tight"
-                    style={{ fontFamily: "'Space Grotesk', sans-serif", color: C.paper }}
-                  >
-                    {car.title}
-                  </span>
-                  <ChevronRight
-                    size={18}
-                    className="career-chevron justify-self-end transition-all duration-300"
-                    style={{ color: C.slateLight }}
-                  />
-                </motion.div>
-              );
-            })}
+                    {/* Top row */}
+                    <div className="flex items-start justify-between mb-3 sm:mb-4">
+                      <div 
+                        className="career-icon-box flex h-8 w-8 sm:h-10 sm:w-10 items-center justify-center rounded-lg sm:rounded-xl border transition-all duration-300"
+                        style={{ borderColor: C.panelBorder, backgroundColor: "rgba(244, 185, 3, 0.05)" }}
+                      >
+                        <Icon size={15} className="career-icon transition-colors duration-300" style={{ color: C.gold }} />
+                      </div>
+                      <span className="font-mono text-[10px] sm:text-xs font-bold" style={{ color: C.slateLight }}>
+                        {String(idx + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+
+                    {/* Title */}
+                    <div className="my-0.5 sm:my-1">
+                      <h3 
+                        className="text-[13px] sm:text-[16px] font-bold tracking-tight transition-colors group-hover:text-yellow-600"
+                        style={{ fontFamily: "'Space Grotesk', sans-serif", color: C.paper }}
+                      >
+                        {car.title}
+                      </h3>
+                    </div>
+
+                    {/* Interactive hover bg highlight */}
+                    <div 
+                      className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      style={{
+                        background: `radial-gradient(circle at 100% 100%, rgba(244, 185, 3, 0.03) 0%, transparent 60%)`,
+                      }}
+                    />
+                  </motion.div>
+                );
+              })}
+            </div>
           </div>
         </motion.div>
 
@@ -215,9 +211,9 @@ export default function CareersHighlights() {
                   key={idx}
                   variants={fadeInUp}
                   className="flex items-baseline gap-3 py-3.5 border-b"
-                  style={{ borderColor: `${C.panelBorder}22` }}
+                  style={{ borderColor: C.panelBorder }}
                 >
-                  <span className="font-mono text-[11px]" style={{ color: idx % 2 === 0 ? C.gold : "#8B7AE5" }}>
+                  <span className="font-mono text-[11px]" style={{ color: C.gold }}>
                     {String(idx + 1).padStart(2, "0")}
                   </span>
                   <span className="text-[13.5px] sm:text-[14.5px]" style={{ color: C.slateLight }}>
