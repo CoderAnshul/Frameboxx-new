@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import { Phone, ArrowRight, Radio, Sparkles } from "lucide-react";
 import { C, FONTS } from "../theme";
+import BrandCollaboration from "./BrandCollaboration";
 
 /* ---------------------------------------------------------
    BID BOARD — signature background (Marketing Mode)
@@ -601,6 +602,7 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
 
       {/* ---------------- HERO ---------------- */}
       <section className="relative overflow-hidden">
+        <BrandCollaboration />
         {currentMode === "marketing" ? <BidBoard /> : <GenGrid />}
 
         <div className={`relative z-10 grid gap-10 lg:gap-14 px-5 sm:px-10 py-14 sm:py-20 max-w-7xl mx-auto items-start ${currentMode === "marketing" ? "lg:grid-cols-[1.15fr_0.85fr]" : "lg:grid-cols-1 max-w-3xl"}`}>

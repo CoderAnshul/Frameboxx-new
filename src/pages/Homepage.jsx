@@ -46,13 +46,13 @@ export default function Homepage() {
   return (
     <div style={{ backgroundColor: C.inkSoft, minHeight: "100vh" }}>
       {/* Hero section containing navbar and live dashboard */}
+      
       <Hero
         currentMode="marketing"
         onToggleMode={() => navigate("/ai")}
         onViewCurriculum={handleViewCurriculum}
         onBookDemo={handleBookDemo}
       />
-      <BrandCollaboration />
       <WhySection />
       <About/>
       <div ref={curriculumRef} id="digital-marketing-curriculum">

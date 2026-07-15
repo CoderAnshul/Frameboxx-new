@@ -36,8 +36,7 @@ export default function BrandCollaboration() {
   return (
     <section 
       ref={ref} 
-      className="relative overflow-hidden py-16 sm:py-24"
-      style={{ backgroundColor: C.inkSoft }}
+      className="relative z-10 overflow-hidden py-16 sm:py-24"
     >
       <style>{`
         ${FONTS}
