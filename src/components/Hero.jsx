@@ -246,23 +246,25 @@ function AuctionLog() {
   const line = AUCTION_LOG_LINES[i];
 
   return (
-    <div className="flex items-center gap-2.5 min-w-0" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-      <span className="relative flex h-2 w-2 shrink-0">
+    <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 w-full min-w-0 px-4" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+      <div className="flex items-center gap-2 shrink-0">
+        <span className="relative flex h-2 w-2 shrink-0">
+          <span
+            className="absolute inline-flex h-full w-full rounded-full opacity-75 pulse-dot"
+            style={{ backgroundColor: C.gold }}
+          />
+          <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: C.gold }} />
+        </span>
         <span
-          className="absolute inline-flex h-full w-full rounded-full opacity-75 pulse-dot"
-          style={{ backgroundColor: C.gold }}
-        />
-        <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: C.gold }} />
-      </span>
+          className="text-[11px] tracking-wider"
+          style={{ color: C.gold }}
+        >
+          LIVE
+        </span>
+        <span style={{ color: C.slateLight }} className="text-[11px]">/</span>
+      </div>
       <span
-        className="text-[11px] tracking-wider shrink-0"
-        style={{ color: C.gold }}
-      >
-        LIVE
-      </span>
-      <span style={{ color: C.slateLight }} className="text-[11px] shrink-0">/</span>
-      <span
-        className="text-[12px] transition-opacity duration-300 truncate"
+        className="text-[12px] transition-opacity duration-300 text-center"
         style={{ color: C.paper, opacity: visible ? 1 : 0 }}
       >
         <b style={{ color: line.tag === "WON" ? C.butter : C.slateLight }}>{line.tag}</b>{" "}
@@ -301,23 +303,25 @@ function GenerationLog() {
   const line = GEN_LOG_LINES[i];
 
   return (
-    <div className="flex items-center justify-center gap-2.5 min-w-0" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
-      <span className="relative flex h-2 w-2 shrink-0">
+    <div className="flex flex-wrap items-center justify-center gap-x-2.5 gap-y-1 w-full min-w-0 px-4" style={{ fontFamily: "'JetBrains Mono', monospace" }}>
+      <div className="flex items-center gap-2 shrink-0">
+        <span className="relative flex h-2 w-2 shrink-0">
+          <span
+            className="absolute inline-flex h-full w-full rounded-full opacity-75 pulse-dot"
+            style={{ backgroundColor: C.gold }}
+          />
+          <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: C.gold }} />
+        </span>
         <span
-          className="absolute inline-flex h-full w-full rounded-full opacity-75 pulse-dot"
-          style={{ backgroundColor: C.gold }}
-        />
-        <span className="relative inline-flex rounded-full h-2 w-2" style={{ backgroundColor: C.gold }} />
-      </span>
+          className="text-[11px] tracking-wider"
+          style={{ color: C.gold }}
+        >
+          LIVE
+        </span>
+        <span style={{ color: C.slateLight }} className="text-[11px]">/</span>
+      </div>
       <span
-        className="text-[11px] tracking-wider shrink-0"
-        style={{ color: C.gold }}
-      >
-        LIVE
-      </span>
-      <span style={{ color: C.slateLight }} className="text-[11px] shrink-0">/</span>
-      <span
-        className="text-[12px] transition-opacity duration-300 truncate"
+        className="text-[12px] transition-opacity duration-300 text-center"
         style={{ color: C.paper, opacity: visible ? 1 : 0 }}
       >
         <b style={{ color: line.tag === "DONE" ? C.butter : C.slateLight }}>{line.tag}</b>{" "}
@@ -669,33 +673,37 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
             </>
           ) : (
             /* AI Mode - Keep original layout centered */
-            <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+            <div className="flex flex-col items-center text-center max-w-3xl mx-auto w-full px-4">
               <div
-                className="fade-up inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 mb-7"
+                className="fade-up inline-flex items-center justify-center gap-2 rounded-full px-3.5 py-1.5 mb-7 max-w-full"
                 style={{ border: `1px solid ${C.panelBorder}33`, backgroundColor: "rgba(244,185,3,0.05)" }}
               >
-                <Sparkles size={12} style={{ color: C.gold }} />
+                <Sparkles size={12} className="shrink-0" style={{ color: C.gold }} />
                 <span
-                  className="text-[11px] tracking-[0.12em]"
-                  style={{ fontFamily: "'JetBrains Mono', monospace", color: C.butter }}
+                  className="tracking-[0.12em] text-center"
+                  style={{
+                    fontFamily: "'JetBrains Mono', monospace",
+                    color: C.butter,
+                    fontSize: "clamp(9.5px, 2.8vw, 11px)",
+                  }}
                 >
                   LIVE COHORT ENROLLING · AI CONTENT CREATION
                 </span>
               </div>
 
               <h1
-                className="fade-up font-bold leading-[0.98] tracking-tight"
+                className="fade-up font-bold leading-[1.1] tracking-tight w-full max-w-2xl mx-auto"
                 style={{
                   fontFamily: "'Space Grotesk', sans-serif",
                   color: C.paper,
-                  fontSize: "clamp(2.6rem, 6vw, 4.6rem)",
+                  fontSize: "clamp(2rem, 6.5vw, 4.2rem)",
                   animationDelay: "0.08s",  
                   textAlign: "center",
                 }}
               >
                 Content Creation,
                 <br />
-                <span className="inline-flex items-baseline justify-center gap-3 flex-wrap">
+                <span className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 w-full mt-1.5">
                   run by the
                   <span className="relative inline-flex items-center">
                     <span
@@ -711,15 +719,24 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
                 </span>
               </h1>
               <div
-                className="fade-up text-[10.5px] tracking-[0.14em] mt-2 mb-6"
-                style={{ fontFamily: "'JetBrains Mono', monospace", color: C.slateLight, animationDelay: "0.5s" }}
+                className="fade-up tracking-[0.14em] mt-2 mb-6 text-center"
+                style={{
+                  fontFamily: "'JetBrains Mono', monospace",
+                  color: C.slateLight,
+                  animationDelay: "0.5s",
+                  fontSize: "clamp(10px, 2.5vw, 12px)",
+                }}
               >
                 RENDER COMPLETE · AI-DRIVEN CONTENT
               </div>
 
               <p
-                className="fade-up text-[15.5px] sm:text-lg leading-relaxed max-w-xl"
-                style={{ color: C.slateLight, animationDelay: "0.16s" }}
+                className="fade-up leading-relaxed max-w-xl w-full px-2"
+                style={{
+                  color: C.slateLight,
+                  animationDelay: "0.16s",
+                  fontSize: "clamp(13.5px, 3.5vw, 16.5px)",
+                }}
               >
                 Every headline, edit, and visual now passes through a model
                 before it ships — and the creators winning attention are the
@@ -728,7 +745,7 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
                 copilots now powering all three.
               </p>
 
-              <div className="fade-up flex flex-wrap items-center justify-center gap-3 mt-8" style={{ animationDelay: "0.24s" }}>
+              <div className="fade-up flex flex-wrap items-center justify-center gap-3 mt-8 w-full px-4" style={{ animationDelay: "0.24s" }}>
                 <button
                   onClick={onViewCurriculum}
                   className="rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:scale-[1.03] cursor-pointer"
@@ -760,17 +777,17 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
                 <GenerationLog />
               </div>
 
-              <div className="fade-up flex flex-wrap items-center justify-center gap-x-7 gap-y-3 mt-9" style={{ animationDelay: "0.36s" }}>
-                <span className="text-[11px]" style={{ color: C.slateLight, fontFamily: "'JetBrains Mono', monospace" }}>
+              <div className="fade-up flex flex-wrap items-center justify-center gap-x-7 gap-y-3 mt-9 w-full px-4" style={{ animationDelay: "0.36s" }}>
+                <span className="text-[11px] shrink-0" style={{ color: C.slateLight, fontFamily: "'JetBrains Mono', monospace" }}>
                   TOOLS YOU'LL MASTER
                 </span>
                 {["Midjourney", "Runway", "Adobe Firefly"].map((n) => (
-                  <span key={n} className="text-sm font-medium" style={{ color: C.paper, fontFamily: "'Space Grotesk', sans-serif" }}>
+                  <span key={n} className="text-sm font-medium shrink-0" style={{ color: C.paper, fontFamily: "'Space Grotesk', sans-serif" }}>
                     {n}
                   </span>
                 ))}
                 <span
-                  className="text-[11px] px-2.5 py-1 rounded-full"
+                  className="text-[11px] px-2.5 py-1 rounded-full shrink-0"
                   style={{ color: C.gold, border: `1px solid ${C.panelBorder}`, fontFamily: "'JetBrains Mono', monospace" }}
                 >
                   20+ TOOLS
