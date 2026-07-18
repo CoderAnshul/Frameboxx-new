@@ -381,7 +381,7 @@ function ConsoleForm() {
             <span className="relative inline-flex rounded-full h-1.5 w-1.5" style={{ backgroundColor: C.gold }} />
           </span>
           <span
-            className="text-[10px]"
+            className="text-[10px] hidden md:block"
             style={{ fontFamily: "'JetBrains Mono', monospace", color: C.slateLight }}
           >
             214 enrolled this week
@@ -542,6 +542,14 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
           to { opacity: 1; transform: translateY(0); }
         }
         select option { background-color: ${C.ink}; }
+        .logo-glow {
+          box-shadow: 0 10px 40px -10px rgba(244, 185, 3, 0.15);
+          transition: all 0.5s ease;
+        }
+        .logo-glow:hover {
+          box-shadow: 0 15px 50px -5px rgba(244, 185, 3, 0.25);
+          transform: translateY(-2px);
+        }
         @media (prefers-reduced-motion: reduce) {
           .bidcell, .bidnum, .gencell, .gentag, .pulse-dot, .badge-pulse, .bidtag-in, .fade-up { animation: none !important; }
         }
@@ -571,20 +579,18 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
             className="relative z-20 max-w-7xl mx-auto flex items-center justify-between px-5 sm:px-10 py-4 border-b"
             style={{ borderColor: `${C.panelBorder}33`, backgroundColor: C.inkSoft }}
           >
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 sm:gap-4">
               <img
                 src="/logo.png"
                 alt="Frameboxx Logo"
                 className="h-8 sm:h-9 w-auto object-contain"
               />
-              <div className="hidden sm:flex flex-col leading-none border-l pl-3" style={{ borderColor: C.panelBorder }}>
-                <span className="text-[9px] tracking-[0.16em]" style={{ color: C.slateLight, fontFamily: "'JetBrains Mono', monospace" }}>
-                  INSTITUTE OF EMERGING MEDIA
-                </span>
-                <span className="text-[9px] mt-0.5" style={{ color: C.gold, fontFamily: "'JetBrains Mono', monospace" }}>
-                  Powered by UID
-                </span>
-              </div>
+              <div className="h-6 w-px" style={{ backgroundColor: `${C.panelBorder}55` }} />
+              <img
+                src="/logo2.jpeg"
+                alt="Partner Logo"
+                className="h-8 sm:h-9 w-auto object-contain rounded"
+              />
             </div>
             <div className="flex items-center gap-2.5">
               <a
@@ -602,188 +608,174 @@ export default function Hero({ onViewCurriculum, onBookDemo, currentMode = "mark
 
       {/* ---------------- HERO ---------------- */}
       <section className="relative overflow-hidden">
-        <BrandCollaboration />
+        {currentMode === "marketing" && <BrandCollaboration />}
         {currentMode === "marketing" ? <BidBoard /> : <GenGrid />}
 
-        <div className={`relative z-10 grid gap-10 lg:gap-14 px-5 sm:px-10 py-14 sm:py-20 max-w-7xl mx-auto items-start ${currentMode === "marketing" ? "lg:grid-cols-[1.15fr_0.85fr]" : "lg:grid-cols-1 max-w-3xl"}`}>
-          {/* Left column */}
-          <div className={`min-w-0 ${currentMode === "marketing" ? "" : "flex flex-col items-center text-center"}`}>
-            {currentMode === "marketing" ? (
-              <>
-                <div
-                  className="!hidden !lg:block fade-up inline-flex  items-center gap-2 rounded-full px-3.5 py-1.5 mb-7"
-                  style={{ border: `1px solid ${C.panelBorder}`, backgroundColor: "rgba(244, 185, 3, 0.08)" }}
-                >
-                  <Radio size={12} style={{ color: C.gold }} />
-                  <span
-                    className="text-[11px] tracking-[0.12em]"
+        <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-10 py-14 sm:py-20 flex flex-col gap-16">
+          {currentMode === "marketing" ? (
+            <>
+              {/* Top part: Two-column grid with Synergy block on left, Form on right */}
+              <div className="grid gap-10 lg:gap-14 lg:grid-cols-[1.15fr_0.85fr] items-start">
+                {/* Left column: Synergy & Collaboration */}
+                <div className="fade-up min-w-0 text-left lg:sticky lg:top-24 order-2 lg:order-1">
+                  <span   
+                    className="text-[11px] tracking-[0.2em] font-bold uppercase block mb-3"
                     style={{ fontFamily: "'JetBrains Mono', monospace", color: C.gold }}
                   >
-                    LIVE COHORT ENROLLING · ADVANCED CERTIFICATION
+                    Synergy & Collaboration
                   </span>
-                </div>
-
-                <h1
-                  className="fade-up font-bold leading-[0.98] tracking-tight"
-                  style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    color: C.paper,
-                    fontSize: "clamp(2.6rem, 6vw, 4.6rem)",
-                    animationDelay: "0.08s",
-                  }}
-                >
-                  Digital Marketing,
-                  <br />
-                  <span className="inline-flex items-baseline gap-3 flex-wrap">
-                    run by the
-                    <span className="relative inline-flex items-center">
-                      <span
-                        className="bidtag-in inline-flex items-center gap-2 rounded-lg px-4 py-1"
-                        style={{
-                          background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-                          color: C.paper,
-                        }}
-                      >
-                        algorithm
-                      </span>
-                    </span>
-                  </span>
-                </h1>
-                <div
-                  className="fade-up text-[10.5px] tracking-[0.14em] mt-2 mb-6"
-                  style={{ fontFamily: "'JetBrains Mono', monospace", color: C.slateLight, animationDelay: "0.5s" }}
-                >
-                  WINNING BID · AI-DRIVEN MARKETING
-                </div>
-
-                <p
-                  className="fade-up text-[15.5px] sm:text-lg leading-relaxed max-w-xl"
-                  style={{ color: C.slateLight, animationDelay: "0.16s" }}
-                >
-                  Every scroll, click, and purchase runs through a split-second auction —
-                  and AI decides who wins it. Learn to run that auction yourself: Google,
-                  Meta, analytics, and the copilots now optimizing all three.
-                </p>
-              </>
-            ) : (
-              <>
-                <div
-                  className="fade-up inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 mb-7"
-                  style={{ border: `1px solid ${C.panelBorder}33`, backgroundColor: "rgba(244,185,3,0.05)" }}
-                >
-                  <Sparkles size={12} style={{ color: C.gold }} />
-                  <span
-                    className="text-[11px] tracking-[0.12em]"
-                    style={{ fontFamily: "'JetBrains Mono', monospace", color: C.butter }}
+                  <h2 
+                    className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6"
+                    style={{ fontFamily: "'Space Grotesk', sans-serif", color: C.paper }}
                   >
-                    LIVE COHORT ENROLLING · AI CONTENT CREATION
-                  </span>
+                    A Powerful Collaboration
+                  </h2>
+                  <p 
+                    className="text-sm sm:text-base leading-relaxed" 
+                    style={{ color: C.slateLight }}
+                  >
+                    Frameboxx is proud to collaborate and present two specialized tracks designed to address the needs of today's digital landscape. Together, we bring industry experience, expert-led mentorship, and hands-on tool optimization to propel your creative career forward.
+                  </p>
+
+                  <div className="flex items-center justify-start gap-6 sm:gap-10 mt-10">
+                    <div className="logo-glow p-4 bg-white rounded-2xl border" style={{ borderColor: C.panelBorder }}>
+                      <img 
+                        src="/logo.png" 
+                        alt="Frameboxx Logo" 
+                        className="h-10 sm:h-14 w-auto object-contain" 
+                      />
+                    </div>
+                    <div 
+                      className="text-xl sm:text-2xl font-bold font-sans" 
+                      style={{ color: C.gold, fontFamily: "'Space Grotesk', sans-serif" }}
+                    >
+                      ×
+                    </div>
+                    <div className="logo-glow p-4 bg-white rounded-2xl border" style={{ borderColor: C.panelBorder }}>
+                      <img 
+                        src="/logo2.jpeg" 
+                        alt="Partner Brand Logo" 
+                        className="h-10 sm:h-14 w-auto object-contain rounded-lg" 
+                      />
+                    </div>
+                  </div>
                 </div>
 
-                <h1
-                  className="fade-up font-bold leading-[0.98] tracking-tight"
-                  style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
-                    color: C.paper,
-                    fontSize: "clamp(2.6rem, 6vw, 4.6rem)",
-                    animationDelay: "0.08s",  
-                    textAlign: "left",
-                  }}
+                {/* Right column: Form */}
+                <div className="fade-up lg:sticky lg:top-8 order-1 lg:order-2" style={{ animationDelay: "0.2s" }}>
+                  <ConsoleForm />
+                </div>
+              </div>
+            </>
+          ) : (
+            /* AI Mode - Keep original layout centered */
+            <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
+              <div
+                className="fade-up inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 mb-7"
+                style={{ border: `1px solid ${C.panelBorder}33`, backgroundColor: "rgba(244,185,3,0.05)" }}
+              >
+                <Sparkles size={12} style={{ color: C.gold }} />
+                <span
+                  className="text-[11px] tracking-[0.12em]"
+                  style={{ fontFamily: "'JetBrains Mono', monospace", color: C.butter }}
                 >
-                  Content Creation,
-                  <br />
-                  <span className="inline-flex items-baseline justify-left gap-3 flex-wrap">
-                    run by the
-                    <span className="relative inline-flex items-center">
-                      <span
-                        className="bidtag-in inline-flex items-center gap-2 rounded-lg px-4 py-1"
-                        style={{
-                          background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-                          color: "#1C1D1C",
-                        }}
-                      >
-                        machine
-                      </span>
+                  LIVE COHORT ENROLLING · AI CONTENT CREATION
+                </span>
+              </div>
+
+              <h1
+                className="fade-up font-bold leading-[0.98] tracking-tight"
+                style={{
+                  fontFamily: "'Space Grotesk', sans-serif",
+                  color: C.paper,
+                  fontSize: "clamp(2.6rem, 6vw, 4.6rem)",
+                  animationDelay: "0.08s",  
+                  textAlign: "center",
+                }}
+              >
+                Content Creation,
+                <br />
+                <span className="inline-flex items-baseline justify-center gap-3 flex-wrap">
+                  run by the
+                  <span className="relative inline-flex items-center">
+                    <span
+                      className="bidtag-in inline-flex items-center gap-2 rounded-lg px-4 py-1"
+                      style={{
+                        background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
+                        color: "#1C1D1C",
+                      }}
+                    >
+                      machine
                     </span>
                   </span>
-                </h1>
-                <div
-                  className="fade-up text-[10.5px] tracking-[0.14em] mt-2 mb-6"
-                  style={{ fontFamily: "'JetBrains Mono', monospace", color: C.slateLight, animationDelay: "0.5s" }}
-                >
-                  RENDER COMPLETE · AI-DRIVEN CONTENT
-                </div>
-
-                <p
-                  className="fade-up text-[15.5px] sm:text-lg leading-relaxed max-w-xl"
-                  style={{ color: C.slateLight, animationDelay: "0.16s" }}
-                >
-                  Every headline, edit, and visual now passes through a model
-                  before it ships — and the creators winning attention are the
-                  ones directing it. Learn to direct that pipeline yourself:
-                  prompting, generative design, video automation, and the
-                  copilots now powering all three.
-                </p>
-              </>
-            )}
-
-            <div className={`fade-up flex flex-wrap items-center gap-3 mt-8 ${currentMode === "marketing" ? "" : "justify-center"}`} style={{ animationDelay: "0.24s" }}>
-              <button
-                onClick={onViewCurriculum}
-                className="rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:scale-[1.03] cursor-pointer"
-                style={{
-                  background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
-                  color: "#1C1D1C",
-                  fontFamily: "'Space Grotesk', sans-serif",
-                }}
-              >
-                View curriculum
-              </button>
-              <button
-                onClick={onBookDemo}
-                className="rounded-full px-6 py-3 text-sm font-semibold border transition-colors cursor-pointer"
-                style={{
-                  borderColor: currentMode === "marketing" ? C.gold : C.panelBorder,
-                  color: currentMode === "marketing" ? C.gold : C.paper,
-                  fontFamily: "'Space Grotesk', sans-serif"
-                }}
-              >
-                Book a free demo
-              </button>
-            </div>
-
-            <div
-              className="fade-up mt-9 pt-6 border-t w-full max-w-xl"
-              style={{ borderColor: C.panelBorder, animationDelay: "0.3s" }}
-            >
-              {currentMode === "marketing" ? <AuctionLog /> : <GenerationLog />}
-            </div>
-
-            <div className={`fade-up flex flex-wrap items-center gap-x-7 gap-y-3 mt-9 ${currentMode === "marketing" ? "" : "justify-center"}`} style={{ animationDelay: "0.36s" }}>
-              <span className="text-[11px]" style={{ color: C.slateLight, fontFamily: "'JetBrains Mono', monospace" }}>
-                {currentMode === "marketing" ? "CERTIFIED ALONGSIDE" : "TOOLS YOU'LL MASTER"}
-              </span>
-              {(currentMode === "marketing"
-                ? ["Google", "Microsoft", "Frameboxx"]
-                : ["Midjourney", "Runway", "Adobe Firefly"]
-              ).map((n) => (
-                <span key={n} className="text-sm font-medium" style={{ color: C.paper, fontFamily: "'Space Grotesk', sans-serif" }}>
-                  {n}
                 </span>
-              ))}
-              <span
-                className="text-[11px] px-2.5 py-1 rounded-full"
-                style={{ color: C.gold, border: `1px solid ${C.panelBorder}`, fontFamily: "'JetBrains Mono', monospace" }}
+              </h1>
+              <div
+                className="fade-up text-[10.5px] tracking-[0.14em] mt-2 mb-6"
+                style={{ fontFamily: "'JetBrains Mono', monospace", color: C.slateLight, animationDelay: "0.5s" }}
               >
-                20+ TOOLS
-              </span>
-            </div>
-          </div>
+                RENDER COMPLETE · AI-DRIVEN CONTENT
+              </div>
 
-          {/* Right column: console form */}
-          {currentMode === "marketing" && (
-            <div className="fade-up lg:sticky lg:top-8" style={{ animationDelay: "0.2s" }}>
-              <ConsoleForm />
+              <p
+                className="fade-up text-[15.5px] sm:text-lg leading-relaxed max-w-xl"
+                style={{ color: C.slateLight, animationDelay: "0.16s" }}
+              >
+                Every headline, edit, and visual now passes through a model
+                before it ships — and the creators winning attention are the
+                ones directing it. Learn to direct that pipeline yourself:
+                prompting, generative design, video automation, and the
+                copilots now powering all three.
+              </p>
+
+              <div className="fade-up flex flex-wrap items-center justify-center gap-3 mt-8" style={{ animationDelay: "0.24s" }}>
+                <button
+                  onClick={onViewCurriculum}
+                  className="rounded-full px-6 py-3 text-sm font-semibold transition-transform hover:scale-[1.03] cursor-pointer"
+                  style={{
+                    background: `linear-gradient(135deg, ${C.gold}, ${C.butter})`,
+                    color: "#1C1D1C",
+                    fontFamily: "'Space Grotesk', sans-serif",
+                  }}
+                >
+                  View curriculum
+                </button>
+                <button
+                  onClick={onBookDemo}
+                  className="rounded-full px-6 py-3 text-sm font-semibold border transition-colors cursor-pointer"
+                  style={{
+                    borderColor: C.panelBorder,
+                    color: C.paper,
+                    fontFamily: "'Space Grotesk', sans-serif"
+                  }}
+                >
+                  Book a free demo
+                </button>
+              </div>
+
+              <div
+                className="fade-up mt-9 pt-6 border-t w-full max-w-xl"
+                style={{ borderColor: C.panelBorder, animationDelay: "0.3s" }}
+              >
+                <GenerationLog />
+              </div>
+
+              <div className="fade-up flex flex-wrap items-center justify-center gap-x-7 gap-y-3 mt-9" style={{ animationDelay: "0.36s" }}>
+                <span className="text-[11px]" style={{ color: C.slateLight, fontFamily: "'JetBrains Mono', monospace" }}>
+                  TOOLS YOU'LL MASTER
+                </span>
+                {["Midjourney", "Runway", "Adobe Firefly"].map((n) => (
+                  <span key={n} className="text-sm font-medium" style={{ color: C.paper, fontFamily: "'Space Grotesk', sans-serif" }}>
+                    {n}
+                  </span>
+                ))}
+                <span
+                  className="text-[11px] px-2.5 py-1 rounded-full"
+                  style={{ color: C.gold, border: `1px solid ${C.panelBorder}`, fontFamily: "'JetBrains Mono', monospace" }}
+                >
+                  20+ TOOLS
+                </span>
+              </div>
             </div>
           )}
         </div>

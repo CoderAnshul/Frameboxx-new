@@ -5,7 +5,7 @@ export const C = {
   panelBorder: "#E2E8F0",
   charcoal: "#FFFFFF",
   slate: "#1C1D1C",
-  slateLight: "rgba(28, 29, 28, 0.7)",
+  slateLight: "rgba(28, 29, 28, 0.96)",
   gold: "#F4B903",
   butter: "#F4B903",
   paper: "#1C1D1C",

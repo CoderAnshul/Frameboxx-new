@@ -101,56 +101,7 @@ export default function BrandCollaboration() {
 
       <div className="collab-section relative max-w-7xl mx-auto px-6 sm:px-10 lg:px-14">
         {/* Header */}
-        <div 
-          className="text-center max-w-3xl mx-auto mb-16 sm:mb-20 transition-all duration-700"
-          style={{
-            opacity: revealed ? 1 : 0,
-            transform: revealed ? "translateY(0)" : "translateY(20px)"
-          }}
-        >
-          <span 
-            className="text-[11px] tracking-[0.2em] font-bold uppercase block mb-3"
-            style={{ fontFamily: "'JetBrains Mono', monospace", color: C.gold }}
-          >
-            Synergy & Collaboration
-          </span>
-          <h2 
-            className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight mb-6"
-            style={{ fontFamily: "'Space Grotesk', sans-serif", color: C.paper }}
-          >
-            A Powerful Collaboration
-          </h2>
-          <p 
-            className="text-sm sm:text-base leading-relaxed" 
-            style={{ color: C.slateLight }}
-          >
-            Frameboxx 2.0 is proud to collaborate and present two specialized tracks designed to address the needs of today's digital landscape. Together, we bring industry experience, expert-led mentorship, and hands-on tool optimization to propel your creative career forward.
-          </p>
-
-          {/* Collaborative Logos Panel */}
-          <div className="flex items-center justify-center gap-6 sm:gap-10 mt-10">
-            <div className="logo-glow p-4 bg-white rounded-2xl border" style={{ borderColor: C.panelBorder }}>
-              <img 
-                src="/logo.png" 
-                alt="Frameboxx Logo" 
-                className="h-10 sm:h-14 w-auto object-contain" 
-              />
-            </div>
-            <div 
-              className="text-xl sm:text-2xl font-bold font-sans" 
-              style={{ color: C.gold, fontFamily: "'Space Grotesk', sans-serif" }}
-            >
-              ×
-            </div>
-            <div className="logo-glow p-4 bg-white rounded-2xl border" style={{ borderColor: C.panelBorder }}>
-              <img 
-                src="/logo2.jpeg" 
-                alt="Partner Brand Logo" 
-                className="h-10 sm:h-14 w-auto object-contain rounded-lg" 
-              />
-            </div>
-          </div>
-        </div>
+        
 
         {/* Featured Courses Grid */}
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 max-w-5xl mx-auto">

@@ -5,11 +5,12 @@ import WhySection from "../components/WhySection";
 import { C } from "../theme";
 import About from "../components/About";
 import Learning from "../components/Learning";
-import Gallery from "../components/Gallery";
-import TestimonialsReel from "../components/Testimonials";
+
 import AiHomepage from "./AiHomepage";
 import BrandCollaboration from "../components/BrandCollaboration";
 import Footer from "../components/Footer";
+import CurriculumOverview from "../components/CurriculumOverview";
+import AdExchangeSection from "../components/AdExchangeSection";
 
 export default function Homepage() {
   const curriculumRef = useRef(null);
@@ -53,13 +54,20 @@ export default function Homepage() {
         onViewCurriculum={handleViewCurriculum}
         onBookDemo={handleBookDemo}
       />
-      <WhySection />
-      <About/>
       <div ref={curriculumRef} id="digital-marketing-curriculum">
         <Learning />
       </div>
-      <Gallery/>
-      <TestimonialsReel/>
+      <div ref={curriculumRef} id="ai-curriculum">
+              <CurriculumOverview />
+       </div>
+      <AdExchangeSection 
+        onViewCurriculum={handleViewCurriculum} 
+        onBookDemo={handleBookDemo} 
+      />
+      <WhySection />
+      <About/>
+      
+     
 
       {/* Separation Section */}
       <div className="relative py-16 flex flex-col items-center justify-center overflow-hidden">

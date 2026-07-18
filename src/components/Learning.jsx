@@ -323,7 +323,7 @@ export default function Curriculum() {
       `}</style>
 
       <section
-        className="curriculum-section relative overflow-hidden py-20 sm:py-28"
+        className="curriculum-section relative overflow-hidden pt-20 "
         style={{ backgroundColor: C.inkSoft }}
       >
         <div
@@ -369,34 +369,6 @@ export default function Curriculum() {
               />
             ))}
           </div>
-
-          {/* ---- Learning path ---- */}
-          <div className="mb-10">
-            <div className="flex items-center gap-2.5 mb-3">
-              <Sparkles size={14} style={{ color: C.gold }} />
-              <span
-                className="text-[11px] tracking-[0.18em]"
-                style={{ color: C.gold, fontFamily: "'JetBrains Mono', monospace" }}
-              >
-                14 ROUNDS · ONE PODIUM FINISH
-              </span>
-            </div>
-            <h2
-              className="font-bold leading-[1.02] tracking-tight mb-3"
-              style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-                color: C.paper,
-                fontSize: "clamp(1.8rem, 3.8vw, 2.6rem)",
-              }}
-            >
-              The learning path
-            </h2>
-            <p className="text-[14px]" style={{ color: C.slate }}>
-              Every round sharpens one skill. Clear all fourteen and you're standing on the podium, certified.
-            </p>
-          </div>
-
-          <Roadmap />
         </div>
       </section>
     </>

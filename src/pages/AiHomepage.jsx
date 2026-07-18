@@ -7,6 +7,8 @@ import CareersHighlights from "../components/CareersHighlights";
 import ToolsSyllabus from "../components/ToolsSyllabus";
 import CreativeWorkflow from "../components/CreativeWorkflow";
 import Footer from "../components/Footer";
+import Gallery from "../components/Gallery";
+import TestimonialsReel from "../components/Testimonials";
 import { C } from "../theme";
 
 export default function AiHomepage({ isNested = false }) {
@@ -42,12 +44,12 @@ export default function AiHomepage({ isNested = false }) {
       />
 
       <WhyAPCC />
-      <div ref={curriculumRef} id="ai-curriculum">
-        <CurriculumOverview />
-      </div>
+      
       <CareersHighlights />
       <ToolsSyllabus />
       <CreativeWorkflow />
+       <Gallery/>
+      <TestimonialsReel/>
       {!isNested && <Footer />}
     </div>
   );

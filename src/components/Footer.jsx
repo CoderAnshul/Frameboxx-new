@@ -51,7 +51,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 sm:px-10 relative z-10">
         
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           
           {/* Column 1: Logo & Branding */}
           <div className="flex flex-col gap-5">
@@ -64,7 +64,7 @@ export default function Footer() {
               />
             </div>
             <p className="text-xs sm:text-[13px] leading-relaxed" style={{ color: C.slateLight }}>
-              Frameboxx 2.0 is a premier academy offering specialized industry-focused programs in Digital Marketing and AI Content Creation. Build real-world agency skills under guidance of industry mentors.
+              Frameboxx is a premier academy offering specialized industry-focused programs in Digital Marketing and AI Content Creation. Build real-world agency skills under guidance of industry mentors.
             </p>
           </div>
 
@@ -101,25 +101,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Column 3: Program Modules */}
-          <div>
-            <h4 
-              className="text-xs font-bold uppercase tracking-wider mb-5" 
-              style={{ fontFamily: "'Space Grotesk', sans-serif", color: C.gold }}
-            >
-              Curriculum Core
-            </h4>
-            <ul className="flex flex-col gap-3 text-xs sm:text-[13px] text-zinc-400">
-              <li>• Search Engine Optimization (SEO)</li>
-              <li>• Social Media & Brand Growth</li>
-              <li>• Performance Marketing & PPC</li>
-              <li>• AI-Assisted Copy & Graphics</li>
-              <li>• Video Pipeline & Hook Optimization</li>
-              <li>• Mobile Video Editing & Pacing</li>
-            </ul>
-          </div>
-
-          {/* Column 4: Contact & Location */}
+          {/* Column 3: Contact & Location */}
           <div className="flex flex-col gap-4">
             <h4 
               className="text-xs font-bold uppercase tracking-wider mb-2" 
@@ -172,14 +154,11 @@ export default function Footer() {
         {/* Footer Bottom Bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] font-mono text-zinc-500">
           <div>
-            <span>&copy; {currentYear} Frameboxx 2.0. All Rights Reserved.</span>
+            <span>&copy; {currentYear} Frameboxx. All Rights Reserved.</span>
           </div>
           
-          <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span>LIVE SERVER</span>
-            </span>
+          <div className="flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             <span>MADE FOR INDUSTRY READY CREATIVES</span>
           </div>
         </div>
